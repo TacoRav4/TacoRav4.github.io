@@ -9,12 +9,12 @@ const routeCopy = {
   industry: {
     line: "I build machine-learning systems and the benchmarks that decide whether they actually work.",
     status:
-      "Industry route selected; projects below reordered around systems, validation, and engineering tradeoffs.",
+      "Industry view. The same projects, ordered to foreground systems work and validation.",
   },
   research: {
     line: "I use computational models and large-scale corpora to find where a theory's predictions fail, then work out why.",
     status:
-      "Research / PhD route selected; projects below reordered around questions, failed predictions, and revised explanations.",
+      "Research view. The same projects, ordered to foreground failed predictions and revised explanations.",
   },
 } satisfies Record<Route, { line: string; status: string }>;
 

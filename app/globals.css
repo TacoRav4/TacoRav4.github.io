@@ -104,8 +104,8 @@ summary:focus-visible {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.9fr);
-  gap: clamp(4rem, 8vw, 7rem);
+  grid-template-columns: minmax(17rem, 0.79fr) minmax(0, 1.21fr);
+  gap: clamp(3rem, 5vw, 4.5rem);
   min-height: 33rem;
   padding: 5rem 0 4rem;
   align-items: start;
@@ -116,25 +116,29 @@ summary:focus-visible {
 }
 
 .hero h1 {
-  max-width: 14ch;
+  max-width: 100%;
   margin: 0;
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: clamp(3rem, 5vw, 4.25rem);
   font-weight: 650;
   letter-spacing: -0.06em;
   line-height: 0.92;
 }
 
 .profile-figure {
-  width: min(14rem, 100%);
-  margin: 0 0 1rem;
+  width: min(18rem, 100%);
+  margin: 0 auto 1rem;
   border: 1px solid var(--line);
   background: var(--surface);
+  transform: translateX(-1.25rem);
 }
 
 .profile-photo {
   display: block;
   width: 100%;
+  aspect-ratio: 4 / 5;
   height: auto;
+  object-fit: cover;
+  object-position: 50% 32%;
 }
 
 .profile-figure figcaption {
@@ -149,7 +153,8 @@ summary:focus-visible {
 }
 
 .hero-identity .identity-links {
-  margin-top: 1rem;
+  gap: 1.35rem;
+  margin-top: 1.5rem;
 }
 
 .identity-links {
@@ -790,6 +795,12 @@ summary {
   line-height: 1.6;
 }
 
+@media (max-width: 900px) {
+  .profile-figure {
+    transform: none;
+  }
+}
+
 @media (max-width: 760px) {
   .site-header {
     align-items: flex-start;
@@ -816,6 +827,7 @@ summary {
 
   .profile-figure {
     width: min(14rem, 75vw);
+    margin-left: 0;
   }
 
   .project-card,

@@ -19,7 +19,14 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="site-footer" id="contact">
-      <span>Zihao (Jason) Zhang · Research Engineer</span>
+      <div className="footer-summary">
+        <span>Zihao (Jason) Zhang · Research Engineer</span>
+        <p>
+          Graduating in August 2026. I&apos;m looking for work in machine
+          learning, data engineering, or scientific computing, and I&apos;m
+          happy to talk about anything adjacent.
+        </p>
+      </div>
       <nav aria-label="Contact">
         <a
           href="https://github.com/TacoRav4"

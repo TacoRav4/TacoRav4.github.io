@@ -7,12 +7,12 @@ type Route = "industry" | "research";
 
 const routeCopy = {
   industry: {
-    line: "I build machine-learning, data, and scientific software systems—and test whether their improvements survive harder settings.",
+    line: "I build machine-learning systems and the benchmarks that decide whether they actually work.",
     status:
       "Industry route selected; projects below reordered around systems, validation, and engineering tradeoffs.",
   },
   research: {
-    line: "I use computational models and large-scale data to find where a theory’s predictions break—and understand why.",
+    line: "I use computational models and large-scale corpora to find where a theory's predictions fail, then work out why.",
     status:
       "Research / PhD route selected; projects below reordered around questions, failed predictions, and revised explanations.",
   },
@@ -186,10 +186,8 @@ export default function AudienceProjectGrid() {
   return (
     <>
       <section className="hero" aria-labelledby="page-title">
-        <div>
-          <p className="eyebrow">Research Engineer · Merced, California</p>
-          <div className="hero-title-row">
-            <h1 id="page-title">Zihao (Jason) Zhang</h1>
+        <div className="hero-identity">
+          <figure className="profile-figure">
             <img
               className="profile-photo"
               src={sitePath("/headshot.png")}
@@ -197,7 +195,12 @@ export default function AudienceProjectGrid() {
               height={219}
               alt="Zihao (Jason) Zhang"
             />
-          </div>
+            <figcaption className="eyebrow">
+              <span>Research Engineer</span>
+              <span>Merced, CA</span>
+            </figcaption>
+          </figure>
+          <h1 id="page-title">Zihao (Jason) Zhang</h1>
           <nav className="identity-links" aria-label="Homepage contact">
             <a
               href="https://github.com/TacoRav4"
@@ -225,9 +228,12 @@ export default function AudienceProjectGrid() {
         <div className="hero-copy">
           <h2>{routeCopy[route].line}</h2>
           <p>
-            M.S. candidate in Cognitive and Information Sciences at UC Merced.
-            I work across scientific ML, bioinformatics, computational music,
-            and reproducible software.
+            M.S. candidate in Cognitive and Information Sciences at UC Merced,
+            where my research is on how listeners track tonal structure over
+            time. Most recently I spent a summer at a national lab doing
+            machine learning and benchmark design for metagenome binning. I
+            care more about whether a result reproduces than about how good it
+            looked the first time.
           </p>
           <div className="route-control" aria-labelledby="route-label">
             <p id="route-label">

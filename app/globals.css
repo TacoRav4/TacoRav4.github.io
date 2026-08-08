@@ -104,34 +104,52 @@ summary:focus-visible {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(16rem, 0.55fr);
-  gap: 3rem;
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.9fr);
+  gap: clamp(4rem, 8vw, 7rem);
   min-height: 33rem;
-  padding: 6rem 0 4rem;
+  padding: 5rem 0 4rem;
   align-items: start;
+}
+
+.hero-identity {
+  min-width: 0;
 }
 
 .hero h1 {
   max-width: 14ch;
   margin: 0;
-  font-size: clamp(3rem, 8vw, 6.8rem);
+  font-size: clamp(3rem, 8vw, 5.5rem);
   font-weight: 650;
   letter-spacing: -0.06em;
   line-height: 0.92;
 }
 
-.hero-title-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 7rem;
-  gap: 1.5rem;
-  align-items: end;
+.profile-figure {
+  width: min(14rem, 100%);
+  margin: 0 0 1rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
 }
 
 .profile-photo {
   display: block;
-  width: 7rem;
+  width: 100%;
   height: auto;
-  border: 1px solid var(--ink);
+}
+
+.profile-figure figcaption {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--line);
+  line-height: 1.45;
+}
+
+.profile-figure figcaption span {
+  display: block;
+}
+
+.hero-identity .identity-links {
+  margin-top: 1rem;
 }
 
 .identity-links {
@@ -758,6 +776,20 @@ summary {
   gap: 1rem;
 }
 
+.footer-summary {
+  max-width: 46rem;
+}
+
+.footer-summary span {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.footer-summary p {
+  margin: 0.65rem 0 0;
+  line-height: 1.6;
+}
+
 @media (max-width: 760px) {
   .site-header {
     align-items: flex-start;
@@ -782,12 +814,8 @@ summary {
     padding-top: 4rem;
   }
 
-  .hero-title-row {
-    grid-template-columns: minmax(0, 1fr) 6.5rem;
-  }
-
-  .profile-photo {
-    width: 6.5rem;
+  .profile-figure {
+    width: min(14rem, 75vw);
   }
 
   .project-card,

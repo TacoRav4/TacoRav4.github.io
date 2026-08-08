@@ -28,7 +28,7 @@ The default build uses `/` as its base path for the GitHub user site.
 
 ## Public-material boundary
 
-This repository contains only the portfolio source, its tests, five approved
+This repository contains only the portfolio source, its tests, six approved
 visual assets, and a phone-free public resume. The QuickBin case study uses
 resume-level descriptions and newly drawn explanatory graphics; it does not
 include JGI code, data, or internal artifacts. The tonal figures are unchanged
@@ -36,5 +36,9 @@ copies of assets already tracked in the public tonal-inference project. The
 Connect Four item includes a portfolio evidence graphic, not recovered
 coursework source.
 
-No deployment workflow or hosting credentials are included in this local
-candidate.
+## Deployment
+
+Pushes to `main` run `.github/workflows/deploy-pages.yml`, which builds,
+tests, lints, and type-checks the site, then deploys it to GitHub Pages using
+GitHub's built-in `GITHUB_TOKEN`. No hosting credentials are stored in this
+repository.

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="360" viewBox="0 0 720 360" role="img" aria-labelledby="title desc">
+  <title id="title">Connect Four benchmark sequence</title>
+  <desc id="desc">Two invalid measurements, 32 percent and 80 percent, are marked as discarded before the fixed-depth development result and independently reproduced held-out result.</desc>
+  <rect width="720" height="360" fill="#F8F6F0"/>
+
+  <text x="32" y="40" fill="#07716C" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="700" letter-spacing="0.8">MEASUREMENT AUDIT → FROZEN RESULT → REPRODUCTION</text>
+
+  <path d="M92 132H628" fill="none" stroke="#CDD2CF" stroke-width="3"/>
+  <path d="M92 132H330" fill="none" stroke="#B84A32" stroke-width="3" stroke-dasharray="9 8"/>
+  <path d="M330 132H628" fill="none" stroke="#07716C" stroke-width="3"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" text-anchor="middle">
+    <circle cx="92" cy="132" r="20" fill="#F8F6F0" stroke="#B84A32" stroke-width="3"/>
+    <path d="M82 122L102 142M102 122L82 142" fill="none" stroke="#B84A32" stroke-width="3"/>
+    <text x="92" y="92" fill="#172023" font-size="30" font-weight="700">32%</text>
+    <text x="92" y="184" fill="#B84A32" font-size="22" font-weight="700">DISCARDED</text>
+    <text x="92" y="218" fill="#626D72" font-size="20">
+      <tspan x="92">timeout</tspan>
+      <tspan x="92" dy="25">→ random</tspan>
+    </text>
+
+    <circle cx="250" cy="132" r="20" fill="#F8F6F0" stroke="#B84A32" stroke-width="3"/>
+    <path d="M240 122L260 142M260 122L240 142" fill="none" stroke="#B84A32" stroke-width="3"/>
+    <text x="250" y="92" fill="#172023" font-size="30" font-weight="700">80%</text>
+    <text x="250" y="184" fill="#B84A32" font-size="22" font-weight="700">DISCARDED</text>
+    <text x="250" y="218" fill="#626D72" font-size="20">
+      <tspan x="250">harness 5.7x</tspan>
+      <tspan x="250" dy="25">slower</tspan>
+    </text>
+
+    <circle cx="430" cy="132" r="18" fill="#F8F6F0" stroke="#07716C" stroke-width="3"/>
+    <text x="430" y="139" fill="#07716C" font-size="19" font-weight="800">✓</text>
+    <text x="430" y="92" fill="#172023" font-size="30" font-weight="700">39/40</text>
+    <text x="430" y="184" fill="#07716C" font-size="20" font-weight="700">DEVELOPMENT</text>
+    <text x="430" y="218" fill="#626D72" font-size="20">fixed depth 6</text>
+
+    <circle cx="628" cy="132" r="22" fill="#07716C"/>
+    <text x="628" y="140" fill="#F8F6F0" font-size="21" font-weight="800">✓</text>
+    <text x="628" y="92" fill="#172023" font-size="30" font-weight="700">93/100</text>
+    <text x="628" y="184" fill="#07716C" font-size="20" font-weight="700">HELD OUT</text>
+    <text x="628" y="218" fill="#626D72" font-size="20">reproduced</text>
+  </g>
+
+  <line x1="32" y1="272" x2="688" y2="272" stroke="#CDD2CF"/>
+  <text x="32" y="307" fill="#172023" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18">baseline: unmodified 1001-rollout Monte Carlo</text>
+  <text x="32" y="337" fill="#626D72" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18">fixed depth 6 · alternating first player</text>
+</svg>

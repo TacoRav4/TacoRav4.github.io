@@ -25,6 +25,11 @@ test("prerenders the portfolio homepage without starter content", async () => {
   assert.match(html, /Selected evidence/);
   assert.match(html, /Building trustworthy evidence/);
   assert.match(html, /When better memory cannot fix/);
+  assert.match(
+    html,
+    new RegExp(`src="${escapedBasePath}headshot\\.png"`),
+  );
+  assert.doesNotMatch(html, /Portrait placeholder|Pending Jason's photo/);
   assert.doesNotMatch(
     html,
     /codex-preview|SkeletonPreview|react-loading-skeleton|vinext|wrangler/i,
@@ -109,6 +114,7 @@ test("emits static assets and route-specific metadata", async () => {
   assert.match(tonalHtml, /<title>Tonal Inference Modeling/);
 
   for (const asset of [
+    "headshot.png",
     "astar/path-comparison.svg",
     "connect-four/benchmark-sequence.svg",
     "harmonic/surprisal-over-time.png",

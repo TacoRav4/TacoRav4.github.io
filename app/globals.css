@@ -122,27 +122,16 @@ summary:focus-visible {
 
 .hero-title-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 8rem;
+  grid-template-columns: minmax(0, 1fr) 7rem;
   gap: 1.5rem;
   align-items: end;
 }
 
-.portrait-placeholder {
-  display: grid;
-  width: 8rem;
-  min-height: 8rem;
-  padding: 1rem;
-  place-items: center;
-  border: 1px dashed var(--graphite);
-  background: var(--surface);
-  color: var(--graphite);
-  font-size: 0.75rem;
-  line-height: 1.4;
-  text-align: center;
-}
-
-.portrait-placeholder span {
+.profile-photo {
   display: block;
+  width: 7rem;
+  height: auto;
+  border: 1px solid var(--ink);
 }
 
 .identity-links {
@@ -794,7 +783,11 @@ summary {
   }
 
   .hero-title-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) 6.5rem;
+  }
+
+  .profile-photo {
+    width: 6.5rem;
   }
 
   .project-card,

@@ -190,10 +190,13 @@ export default function AudienceProjectGrid() {
           <p className="eyebrow">Research Engineer · Merced, California</p>
           <div className="hero-title-row">
             <h1 id="page-title">Zihao (Jason) Zhang</h1>
-            <div className="portrait-placeholder">
-              Portrait placeholder
-              <span>Pending Jason&apos;s photo</span>
-            </div>
+            <img
+              className="profile-photo"
+              src={sitePath("/headshot.png")}
+              width={146}
+              height={219}
+              alt="Zihao (Jason) Zhang"
+            />
           </div>
           <nav className="identity-links" aria-label="Homepage contact">
             <a

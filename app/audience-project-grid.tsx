@@ -264,23 +264,11 @@ export default function AudienceProjectGrid() {
 
       <section className="section" id="work" aria-labelledby="work-title">
         <div className="section-heading">
-          <h2 id="work-title">Selected evidence</h2>
-          <p>
-            Five projects, one habit: build a valid comparison, test it in a
-            harder setting, and narrow the claim when the evidence changes.
-          </p>
-        </div>
-
-        <div className="trace" aria-hidden="true">
-          <span className="trace-dot" />
-          <span className="trace-line" />
-          <span className="trace-dot" />
-          <span className="trace-line" />
-          <span className="trace-dot reversal" />
-          <span className="trace-line dashed" />
-          <span className="trace-dot" />
-          <span className="trace-line" />
-          <span className="trace-dot" />
+          <div>
+            <p className="eyebrow">05 / Selected work</p>
+            <h2 id="work-title">After the first result</h2>
+          </div>
+          <p>I picked these projects for what happened next.</p>
         </div>
 
         <div className="project-grid">

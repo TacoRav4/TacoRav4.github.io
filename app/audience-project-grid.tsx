@@ -27,7 +27,7 @@ const projects = [
     eyebrow: "QuickBin · Featured experience",
     title: "Building trustworthy evidence for neural metagenome binning",
     story:
-      "Genome-held-out retraining lowered contamination internally, but external evaluation reversed the model ordering.",
+      "I built a genome-held-out PacBio benchmark to test whether retraining would transfer beyond internal evaluation. It lowered contamination internally, but external evaluation reversed the model ordering.",
     why: {
       industry: "Industry lens: evaluation systems and transfer risk.",
       research: "Research lens: an external reversal narrowed the claim.",
@@ -54,7 +54,7 @@ const projects = [
     eyebrow: "A* · Software",
     title: "Deriving and testing terrain-aware heuristics",
     story:
-      "A compact algorithm story about admissibility, search effort, and the cost of accepting a faster weighted route.",
+      "I derived terrain-aware heuristics to preserve optimality, then measured what weighting them costs. Optimal A* matched Dijkstra's path cost with 81.25% fewer expanded nodes; weighted A* cut expansions by 98.57% while raising mean path cost 1.83%.",
     why: {
       industry: "Industry lens: a bounded performance tradeoff.",
       research: "Research lens: admissible assumptions made testable.",
@@ -85,7 +85,7 @@ const projects = [
     eyebrow: "Tonal inference · Research",
     title: "When better memory cannot fix a lossy representation",
     story:
-      "Recurrence helped on clean synthetic sequences. Real MIDI exposed a larger representation bottleneck and redirected the research.",
+      "Could learned recurrence track tonal center through changing chord sequences? It helped on clean synthetic data, but real MIDI exposed a representation bottleneck recurrence could not fix.",
     why: {
       industry: "Industry lens: diagnosis found an upstream bottleneck.",
       research: "Research lens: a failed transfer redirected the hypothesis.",
@@ -112,7 +112,7 @@ const projects = [
     eyebrow: "Harmonic surprisal · Data",
     title: "Testing—and weakening—a Wundt-curve hypothesis",
     story:
-      "An apparent inverted-U disappeared when unequal decade samples were handled through weighted sensitivity analyses.",
+      "I tested whether a century of popular-song harmony showed a Wundt-like inverted-U in harmonic surprisal. The apparent curve did not survive weighting for unequal decade samples.",
     why: {
       industry: "Industry lens: robustness checks changed the usable result.",
       research: "Research lens: sensitivity analysis weakened the hypothesis.",
@@ -145,7 +145,7 @@ const projects = [
     eyebrow: "Connect Four · Software",
     title: "When the benchmark, not the agent, was the bug",
     story:
-      "A recovered course agent whose measured win rate moved twice for reasons that had nothing to do with the search itself. The verified result uses fixed depth 6 against an unmodified 1001-rollout Monte Carlo baseline.",
+      "I built a Minimax + Alpha-Beta agent, then made its benchmark reproducible. Two early win rates were artifacts unrelated to the search; the verified result uses fixed depth 6 against an unmodified 1001-rollout Monte Carlo baseline.",
     why: {
       industry: "Industry lens: a measurement bug caught before publication.",
       research: "Research lens: two artifacts separated from the real effect.",
@@ -269,8 +269,9 @@ export default function AudienceProjectGrid() {
             <h2 id="work-title">After the first result</h2>
           </div>
           <p>
-            I picked these projects for what happened next, once each first
-            result faced a harder test and the original story had to change.
+            The problems range from genome binning and pathfinding to music
+            cognition and game-tree search; the build and the question matter
+            as much as the result.
           </p>
         </div>
 

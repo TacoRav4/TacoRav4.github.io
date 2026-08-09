@@ -24,7 +24,7 @@ test("prerenders the portfolio homepage without starter content", async () => {
   assert.match(html, /Research Engineer/);
   assert.match(html, /05 \/ Selected work/);
   assert.match(html, /After the first result/);
-  assert.match(html, /I picked these projects for what happened next/);
+  assert.match(html, /The problems range from genome binning and pathfinding/);
   assert.match(html, /Building trustworthy evidence/);
   assert.match(html, /When better memory cannot fix/);
   assert.match(

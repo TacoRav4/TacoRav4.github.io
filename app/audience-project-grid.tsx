@@ -268,7 +268,10 @@ export default function AudienceProjectGrid() {
             <p className="eyebrow">05 / Selected work</p>
             <h2 id="work-title">After the first result</h2>
           </div>
-          <p>I picked these projects for what happened next.</p>
+          <p>
+            I picked these projects for what happened next, once each first
+            result faced a harder test and the original story had to change.
+          </p>
         </div>
 
         <div className="project-grid">

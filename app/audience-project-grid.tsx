@@ -104,6 +104,14 @@ const projects = [
     ],
     boundary:
       "Synthetic accuracy and descriptive MIDI behavior remain separate.",
+    detail:
+      "Descriptive real-MIDI behavior, not an accuracy comparison: learned recurrence changed the path and confidence without resolving the dominant tonal bias.",
+    visual: {
+      src: "/tonal/circle-of-fifths-ema-vs-srn.png",
+      width: 1959,
+      height: 994,
+      alt: "Side-by-side Circle-of-Fifths walks for EMA and SRN on the Twinkle 12 MIDI excerpt, showing different key trajectories that both end near F.",
+    },
     href: "/work/tonal-inference/",
   },
   {
@@ -335,6 +343,21 @@ export default function AudienceProjectGrid() {
                 <h3>{project.title}</h3>
                 <p>{project.story}</p>
                 <p className="card-why">{project.why[route]}</p>
+                {"visual" in project && (
+                  <figure className="card-detail-figure">
+                    <img
+                      src={sitePath(project.visual.src)}
+                      width={project.visual.width}
+                      height={project.visual.height}
+                      loading="lazy"
+                      decoding="async"
+                      alt={project.visual.alt}
+                    />
+                    {"detail" in project && (
+                      <figcaption>{project.detail}</figcaption>
+                    )}
+                  </figure>
+                )}
                 <div
                   className="card-trace"
                   role="img"
@@ -364,22 +387,6 @@ export default function AudienceProjectGrid() {
                   <a className="card-link" href={sitePath(project.href)}>
                     Read case study →
                   </a>
-                )}
-                {"detail" in project && "visual" in project && (
-                  <details>
-                    <summary>Expand proof</summary>
-                    <figure className="card-detail-figure">
-                      <img
-                        src={sitePath(project.visual.src)}
-                        width={project.visual.width}
-                        height={project.visual.height}
-                        loading="lazy"
-                        decoding="async"
-                        alt={project.visual.alt}
-                      />
-                      <figcaption>{project.detail}</figcaption>
-                    </figure>
-                  </details>
                 )}
               </article>
             );

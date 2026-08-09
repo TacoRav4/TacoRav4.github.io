@@ -10,13 +10,15 @@ const routeCopy = {
     line: "I build machine-learning systems and the benchmarks that decide whether they actually work.",
     status:
       "Industry view. The same projects, ordered to foreground systems work and validation.",
+    goal: "Goal: show whether a machine-learning system's improvement survives the setting where it is meant to work.",
   },
   research: {
     line: "I use computational models and large-scale corpora to find where a theory's predictions fail, then work out why.",
     status:
       "Research view. The same projects, ordered to foreground failed predictions and revised explanations.",
+    goal: "Goal: show where a model's predictions broke and how the explanation changed.",
   },
-} satisfies Record<Route, { line: string; status: string }>;
+} satisfies Record<Route, { line: string; status: string; goal: string }>;
 
 const projects = [
   {
@@ -229,11 +231,11 @@ export default function AudienceProjectGrid() {
           <h2>{routeCopy[route].line}</h2>
           <p>
             M.S. candidate in Cognitive and Information Sciences at UC Merced,
-            where my research is on how listeners track tonal structure over
-            time. Most recently I spent a summer at a national lab doing
-            machine learning and benchmark design for metagenome binning. I
-            care more about whether a result reproduces than about how good it
-            looked the first time.
+            where my research asks how people track tonal structure as music
+            unfolds over time. Most recently I spent a summer at a national lab
+            doing machine learning and benchmark design for metagenome binning.
+            I care more about whether a result reproduces than about how good
+            it looked the first time.
           </p>
           <div className="route-control" aria-labelledby="route-label">
             <p id="route-label">
@@ -253,6 +255,8 @@ export default function AudienceProjectGrid() {
             </div>
             <p className="route-status" aria-live="polite">
               {routeCopy[route].status}
+              <br />
+              {routeCopy[route].goal}
             </p>
           </div>
         </div>

@@ -85,6 +85,7 @@ summary:focus-visible {
 
 .eyebrow,
 .proof,
+.work-index,
 .section-number,
 .route-status,
 .meta-list,
@@ -225,13 +226,14 @@ summary:focus-visible {
 }
 
 .section {
-  padding: 5rem 0;
+  padding: 2rem 0 5rem;
   border-top: 1px solid var(--ink);
 }
 
 .section-heading {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  align-items: center;
   column-gap: 2rem;
   row-gap: 1rem;
   margin-bottom: 2rem;
@@ -254,6 +256,12 @@ summary:focus-visible {
   margin: 0;
   color: var(--graphite);
   line-height: 1.7;
+}
+
+.work-index {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
 }
 
 .project-grid {

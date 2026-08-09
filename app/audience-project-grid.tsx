@@ -272,6 +272,11 @@ export default function AudienceProjectGrid() {
             The problems range from genome binning and pathfinding to music
             cognition and game-tree search; the build and the question matter
             as much as the result.
+            <br />
+            <span className="work-index">
+              Genomics · Pathfinding · Music cognition · Corpus statistics ·
+              Game-tree search
+            </span>
           </p>
         </div>
 

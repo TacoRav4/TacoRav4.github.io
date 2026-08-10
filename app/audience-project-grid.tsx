@@ -4,6 +4,12 @@ import { useState } from "react";
 import { sitePath } from "./site-path";
 
 type Route = "industry" | "research";
+type ProofTone = "neutral" | "matched" | "reversal";
+type ProofRow = {
+  label: string;
+  value: string;
+  tone: ProofTone;
+};
 
 const routeCopy = {
   industry: {
@@ -20,6 +26,22 @@ const routeCopy = {
   },
 } satisfies Record<Route, { line: string; status: string; goal: string }>;
 
+function ProofBlock({ proof }: { proof: readonly ProofRow[] }) {
+  return (
+    <div className="proof">
+      {proof.map((row) => (
+        <span
+          className={`proof-row proof-row-${row.tone}`}
+          key={`${row.label}-${row.value}`}
+        >
+          <span className="proof-label">{row.label}</span>
+          <span>{row.value}</span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
 const projects = [
   {
     id: "quickbin",
@@ -32,17 +54,22 @@ const projects = [
       industry: "Industry lens: evaluation systems and transfer risk.",
       research: "Research lens: an external reversal narrowed the claim.",
     },
-    trace: {
-      left: "internal",
-      right: "external",
-      label:
-        "Internal improvement followed by an external ordering reversal",
-      reversal: true,
-    },
     proof: [
-      "2,013 genomes · 8.29 Gbp",
-      "contamination 1.7530 → 1.3724 internally",
-      "external CAMI community: N = 1",
+      {
+        label: "SCALE",
+        value: "2,013 genomes · 8.29 Gbp",
+        tone: "neutral",
+      },
+      {
+        label: "INTERNAL",
+        value: "contamination 1.7530 → 1.3724",
+        tone: "neutral",
+      },
+      {
+        label: "REVERSAL",
+        value: "ordering reversed · CAMI community N = 1",
+        tone: "reversal",
+      },
     ],
     boundary:
       "Public V1: prose and newly drawn explanation only; no JGI artifacts.",
@@ -59,16 +86,22 @@ const projects = [
       industry: "Industry lens: a bounded performance tradeoff.",
       research: "Research lens: admissible assumptions made testable.",
     },
-    trace: {
-      left: "Dijkstra",
-      right: "A*",
-      label: "Dijkstra and optimal A star reach the same path cost",
-      reversal: false,
-    },
     proof: [
-      "optimal A*: same mean path cost",
-      "81.25% fewer expanded nodes",
-      "weighted A*: +1.83% mean cost",
+      {
+        label: "MATCHED",
+        value: "optimal A*: same mean path cost as Dijkstra",
+        tone: "matched",
+      },
+      {
+        label: "EXPANSIONS",
+        value: "81.25% fewer expanded nodes",
+        tone: "neutral",
+      },
+      {
+        label: "WEIGHTED",
+        value: "+1.83% mean path cost",
+        tone: "neutral",
+      },
     ],
     detail:
       "Results come from the independent deterministic synthetic benchmark, not the historical course notebook.",
@@ -90,17 +123,27 @@ const projects = [
       industry: "Industry lens: diagnosis found an upstream bottleneck.",
       research: "Research lens: a failed transfer redirected the hypothesis.",
     },
-    trace: {
-      left: "synthetic",
-      right: "MIDI",
-      label:
-        "Synthetic gain followed by a real MIDI representation bottleneck",
-      reversal: true,
-    },
     proof: [
-      "synthetic accuracy: 0.8101 SRN / 0.7529 EMA+MLP",
-      "six-piece difficulty-graded corpus",
-      "54 predeclared sensitivity conditions",
+      {
+        label: "REVERSAL",
+        value: "synthetic gain did not transfer to real MIDI",
+        tone: "reversal",
+      },
+      {
+        label: "SYNTHETIC",
+        value: "0.8101 SRN / 0.7529 EMA+MLP",
+        tone: "neutral",
+      },
+      {
+        label: "CORPUS",
+        value: "six-piece difficulty-graded",
+        tone: "neutral",
+      },
+      {
+        label: "SENSITIVITY",
+        value: "54 predeclared conditions",
+        tone: "neutral",
+      },
     ],
     boundary:
       "Synthetic accuracy and descriptive MIDI behavior remain separate.",
@@ -125,17 +168,27 @@ const projects = [
       industry: "Industry lens: robustness checks changed the usable result.",
       research: "Research lens: sensitivity analysis weakened the hypothesis.",
     },
-    trace: {
-      left: "unweighted",
-      right: "weighted",
-      label:
-        "An unweighted curve changed after weighting and weakened the claim",
-      reversal: true,
-    },
     proof: [
-      "667,858 rows → 277,925 songs",
-      "temporal model: N = 12 decades",
-      "weighted fits: no in-range inverted-U",
+      {
+        label: "REVERSAL",
+        value: "weighting by decade sample size removed the curve",
+        tone: "reversal",
+      },
+      {
+        label: "CORPUS",
+        value: "667,858 rows → 277,925 songs",
+        tone: "neutral",
+      },
+      {
+        label: "TEMPORAL",
+        value: "N = 12 decades",
+        tone: "neutral",
+      },
+      {
+        label: "WEIGHTED",
+        value: "no in-range inverted-U",
+        tone: "neutral",
+      },
     ],
     detail:
       "The unweighted result is reproducible but not robust. Genre differences are statistically detectable with substantial overlap.",
@@ -158,17 +211,22 @@ const projects = [
       industry: "Industry lens: a measurement bug caught before publication.",
       research: "Research lens: two artifacts separated from the real effect.",
     },
-    trace: {
-      left: "frozen",
-      right: "reproduced",
-      label:
-        "The frozen Connect Four result reproduced on independent hardware",
-      reversal: false,
-    },
     proof: [
-      "93/100 on held-out seeds 40-139",
-      "140/140 games reproduced on a second machine",
-      "5.7x harness slowdown found and removed",
+      {
+        label: "VERIFIED",
+        value: "93/100 on held-out seeds 40-139",
+        tone: "matched",
+      },
+      {
+        label: "REPRODUCED",
+        value: "140/140 games reproduced on a second machine",
+        tone: "neutral",
+      },
+      {
+        label: "HARNESS",
+        value: "5.7x harness slowdown found and removed",
+        tone: "neutral",
+      },
     ],
     detail:
       "Fixed search depth 6 against an unmodified 1001-rollout Monte Carlo baseline; Wilson 95% interval [86.3%, 96.6%].",
@@ -301,22 +359,7 @@ export default function AudienceProjectGrid() {
                     <h3>{project.title}</h3>
                     <p>{project.story}</p>
                     <p className="card-why">{project.why[route]}</p>
-                    <div
-                      className="card-trace"
-                      role="img"
-                      aria-label={project.trace.label}
-                    >
-                      <span>{project.trace.left}</span>
-                      <span className="line" />
-                      <span className="marker">=</span>
-                      <span className="line" />
-                      <span>{project.trace.right}</span>
-                    </div>
-                    <div className="proof">
-                      {project.proof.map((line) => (
-                        <span key={line}>{line}</span>
-                      ))}
-                    </div>
+                    <ProofBlock proof={project.proof} />
                     <p className="boundary">{project.boundary}</p>
                   </div>
                   <figure className="card-detail-figure wide-card-visual">
@@ -358,28 +401,7 @@ export default function AudienceProjectGrid() {
                     )}
                   </figure>
                 )}
-                <div
-                  className="card-trace"
-                  role="img"
-                  aria-label={project.trace.label}
-                >
-                  <span>{project.trace.left}</span>
-                  <span className="line" />
-                  <span
-                    className={`marker ${project.trace.reversal ? "reversal" : ""}`}
-                  >
-                    {project.trace.reversal ? "×" : "="}
-                  </span>
-                  <span
-                    className={`line ${project.trace.reversal ? "dashed" : ""}`}
-                  />
-                  <span>{project.trace.right}</span>
-                </div>
-                <div className="proof">
-                  {project.proof.map((line) => (
-                    <span key={line}>{line}</span>
-                  ))}
-                </div>
+                <ProofBlock proof={project.proof} />
                 {"boundary" in project && (
                   <p className="boundary">{project.boundary}</p>
                 )}

@@ -353,35 +353,36 @@ export default function AudienceProjectGrid() {
                 Game-tree search
               </span>
             </p>
-            <div className="route-control" aria-labelledby="route-label">
-              <p id="route-label">
-                <strong>Choose a reading route</strong>
-              </p>
-              <div className="route-buttons">
-                {(["industry", "research"] as const).map((candidate) => (
-                  <button
-                    key={candidate}
-                    type="button"
-                    aria-pressed={route === candidate}
-                    onClick={() => chooseRoute(candidate)}
-                  >
-                    {candidate === "industry" ? "Industry" : "Research / PhD"}
-                  </button>
-                ))}
-              </div>
-              <p className="route-status" aria-live="polite">
-                {routeCopy[route].status}
-                <br />
-                {routeCopy[route].goal}
-                {route === "research" ? (
-                  <>
-                    <br />
-                    {routeCopy.research.line}
-                  </>
-                ) : null}
-              </p>
-            </div>
           </div>
+        </div>
+
+        <div className="route-control" aria-labelledby="route-label">
+          <p id="route-label">
+            <strong>Choose a reading route</strong>
+          </p>
+          <div className="route-buttons">
+            {(["industry", "research"] as const).map((candidate) => (
+              <button
+                key={candidate}
+                type="button"
+                aria-pressed={route === candidate}
+                onClick={() => chooseRoute(candidate)}
+              >
+                {candidate === "industry" ? "Industry" : "Research / PhD"}
+              </button>
+            ))}
+          </div>
+          <p className="route-status" aria-live="polite">
+            {routeCopy[route].status}
+            <br />
+            {routeCopy[route].goal}
+            {route === "research" ? (
+              <>
+                <br />
+                {routeCopy.research.line}
+              </>
+            ) : null}
+          </p>
         </div>
 
         <div className="project-grid" ref={gridRef}>

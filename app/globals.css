@@ -232,7 +232,7 @@ summary:focus-visible {
 
 .route-control {
   max-width: 42rem;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
 }
@@ -290,6 +290,7 @@ summary:focus-visible {
 
 .section-heading.work-heading {
   align-items: start;
+  row-gap: 0.5rem;
 }
 
 .work-heading .route-control {

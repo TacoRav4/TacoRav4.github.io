@@ -300,6 +300,10 @@ summary:focus-visible {
   margin-bottom: 0.75rem;
 }
 
+#work .section-heading .eyebrow {
+  margin-left: 0.125rem;
+}
+
 .section-heading > p,
 .section-heading > div:not(.route-control) > p:first-child {
   max-width: 42rem;

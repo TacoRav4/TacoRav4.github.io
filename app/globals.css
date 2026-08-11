@@ -1,6 +1,7 @@
 :root {
   --paper: #f4f1ea;
   --surface: #faf8f3;
+  --surface-solid: #f9f7f2;
   --ink: #172023;
   --graphite: #626d72;
   --line: #cdd2cf;
@@ -105,9 +106,8 @@ summary:focus-visible {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(17rem, 0.79fr) minmax(0, 1.21fr);
+  grid-template-columns: minmax(0, 1.55fr) minmax(17.1875rem, 0.75fr);
   gap: clamp(3rem, 5vw, 4.5rem);
-  min-height: 33rem;
   padding: 5rem 0 4rem;
   align-items: start;
 }
@@ -117,20 +117,63 @@ summary:focus-visible {
 }
 
 .hero h1 {
-  max-width: 100%;
+  max-width: 20ch;
   margin: 0;
-  font-size: clamp(3rem, 5vw, 4.25rem);
+  font-size: clamp(2.6rem, 4.6vw, 3.6rem);
   font-weight: 650;
-  letter-spacing: -0.06em;
-  line-height: 0.92;
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+}
+
+.hero .eyebrow {
+  margin-bottom: 1.5rem;
+}
+
+.hero-bio {
+  max-width: 52ch;
+  margin: 2rem 0 0;
+  color: var(--graphite);
+  line-height: 1.7;
+}
+
+.hero-belief {
+  max-width: 46ch;
+  margin: 1.5rem 0 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--teal);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.35rem;
+  margin-top: 2.5rem;
+}
+
+.hero-actions .identity-links {
+  margin-top: 0;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.7rem 1.4rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .profile-figure {
-  width: min(18rem, 100%);
-  margin: 0 auto 1rem;
+  width: 100%;
+  margin: 0;
   border: 1px solid var(--line);
   background: var(--surface);
-  transform: translateX(-1.25rem);
 }
 
 .profile-photo {
@@ -151,11 +194,6 @@ summary:focus-visible {
 
 .profile-figure figcaption span {
   display: block;
-}
-
-.hero-identity .identity-links {
-  gap: 1.35rem;
-  margin-top: 1.5rem;
 }
 
 .identity-links {
@@ -193,9 +231,13 @@ summary:focus-visible {
 }
 
 .route-control {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
+}
+
+.route-control > p:first-child {
+  margin: 0 0 0.75em;
 }
 
 .route-buttons {
@@ -222,7 +264,9 @@ summary:focus-visible {
 .route-status {
   min-height: 2.5rem;
   margin: 0;
+  color: var(--graphite);
   font-size: 0.78rem;
+  line-height: 1.6;
 }
 
 .section {
@@ -239,6 +283,10 @@ summary:focus-visible {
   margin-bottom: 2rem;
 }
 
+.section-heading.work-heading {
+  align-items: start;
+}
+
 .section-heading h2 {
   max-width: 12ch;
   margin: 0;
@@ -251,11 +299,16 @@ summary:focus-visible {
   margin-bottom: 0.75rem;
 }
 
-.section-heading > p {
+.section-heading > p,
+.section-heading > div > p:first-child {
   max-width: 42rem;
   margin: 0;
   color: var(--graphite);
   line-height: 1.7;
+}
+
+.work-intro {
+  max-width: 42rem;
 }
 
 .work-index {
@@ -271,17 +324,25 @@ summary:focus-visible {
 }
 
 .project-card {
+  position: relative;
   grid-column: span 6;
   display: flex;
   flex-direction: column;
   min-height: 31rem;
   padding: 2rem;
   border: 1px solid var(--ink);
-  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  /* Opaque equivalent of surface-88%-over-paper. Must stay opaque: cards pass
+     over one another during the route-reorder transition. */
+  background: var(--surface-solid);
 }
 
 .project-card.featured {
   grid-column: span 7;
+}
+
+.project-card.no-figure {
+  align-self: start;
+  min-height: 0;
 }
 
 .project-card.compact {
@@ -347,26 +408,27 @@ summary:focus-visible {
 .proof > span {
   display: grid;
   grid-template-columns: 7rem 1fr;
-  gap: 1rem;
-  align-items: baseline;
 }
 
 .proof-label {
   color: var(--graphite);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-.proof-row-matched,
-.proof-row-matched .proof-label {
+.proof-row-reversal {
+  color: var(--rust);
+}
+
+.proof-row-matched {
   color: var(--teal);
 }
 
-.proof-row-reversal,
-.proof-row-reversal .proof-label {
-  color: var(--rust);
+.proof-row-reversal .proof-label,
+.proof-row-matched .proof-label {
+  color: inherit;
 }
 
 .boundary {
@@ -749,12 +811,6 @@ summary {
   line-height: 1.6;
 }
 
-@media (max-width: 900px) {
-  .profile-figure {
-    transform: none;
-  }
-}
-
 @media (max-width: 760px) {
   .site-header {
     align-items: flex-start;
@@ -780,8 +836,11 @@ summary {
   }
 
   .profile-figure {
-    width: min(14rem, 75vw);
-    margin-left: 0;
+    width: min(18rem, 70vw);
+  }
+
+  .hero-identity {
+    order: 2;
   }
 
   .project-card,
@@ -858,7 +917,6 @@ summary {
 
   .proof > span {
     grid-template-columns: 6rem 1fr;
-    gap: 0.75rem;
   }
 }
 

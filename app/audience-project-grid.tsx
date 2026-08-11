@@ -1,51 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { sitePath } from "./site-path";
 
 type Route = "industry" | "research";
-type ProofTone = "neutral" | "matched" | "reversal";
-type ProofRow = {
-  label: string;
-  value: string;
-  tone: ProofTone;
-};
 
 const routeCopy = {
   industry: {
-    line: "I build machine-learning systems and the benchmarks that decide whether they actually work.",
     status:
       "Industry view. The same projects, ordered to foreground systems work and validation.",
     goal: "Goal: show whether a machine-learning system's improvement survives the setting where it is meant to work.",
   },
   research: {
-    line: "I use computational models and large-scale corpora to find where a theory's predictions fail, then work out why.",
     status:
       "Research view. The same projects, ordered to foreground failed predictions and revised explanations.",
     goal: "Goal: show where a model's predictions broke and how the explanation changed.",
+    line: "I use computational models and large-scale corpora to find where a theory's predictions fail, then work out why.",
   },
-} satisfies Record<Route, { line: string; status: string; goal: string }>;
-
-function ProofBlock({ proof }: { proof: readonly ProofRow[] }) {
-  return (
-    <div className="proof">
-      {proof.map((row) => (
-        <span
-          className={`proof-row proof-row-${row.tone}`}
-          key={`${row.label}-${row.value}`}
-        >
-          <span className="proof-label">{row.label}</span>
-          <span>{row.value}</span>
-        </span>
-      ))}
-    </div>
-  );
-}
+} satisfies Record<Route, { status: string; goal: string }> & {
+  research: { line: string };
+};
 
 const projects = [
   {
     id: "quickbin",
-    className: "featured",
+    className: "featured no-figure",
     eyebrow: "QuickBin · Featured experience",
     title: "Building trustworthy evidence for neural metagenome binning",
     story:
@@ -56,20 +35,17 @@ const projects = [
     },
     proof: [
       {
-        label: "SCALE",
-        value: "2,013 genomes · 8.29 Gbp",
-        tone: "neutral",
-      },
-      {
-        label: "INTERNAL",
-        value: "contamination 1.7530 → 1.3724",
-        tone: "neutral",
-      },
-      {
-        label: "REVERSAL",
-        value: "ordering reversed · CAMI community N = 1",
+        label: "reversal",
+        value: "external evaluation reversed the model ordering",
         tone: "reversal",
       },
+      { label: "benchmark", value: "2,013 genomes · 8.29 Gbp", tone: "plain" },
+      {
+        label: "internal",
+        value: "contamination 1.7530 → 1.3724",
+        tone: "plain",
+      },
+      { label: "external", value: "CAMI community: N = 1", tone: "plain" },
     ],
     boundary:
       "Public V1: prose and newly drawn explanation only; no JGI artifacts.",
@@ -88,20 +64,16 @@ const projects = [
     },
     proof: [
       {
-        label: "MATCHED",
+        label: "matched",
         value: "optimal A*: same mean path cost as Dijkstra",
         tone: "matched",
       },
       {
-        label: "EXPANSIONS",
+        label: "expansions",
         value: "81.25% fewer expanded nodes",
-        tone: "neutral",
+        tone: "plain",
       },
-      {
-        label: "WEIGHTED",
-        value: "+1.83% mean path cost",
-        tone: "neutral",
-      },
+      { label: "weighted", value: "+1.83% mean path cost", tone: "plain" },
     ],
     detail:
       "Results come from the independent deterministic synthetic benchmark, not the historical course notebook.",
@@ -125,24 +97,20 @@ const projects = [
     },
     proof: [
       {
-        label: "REVERSAL",
+        label: "reversal",
         value: "synthetic gain did not transfer to real MIDI",
         tone: "reversal",
       },
       {
-        label: "SYNTHETIC",
+        label: "synthetic",
         value: "0.8101 SRN / 0.7529 EMA+MLP",
-        tone: "neutral",
+        tone: "plain",
       },
+      { label: "corpus", value: "six-piece difficulty-graded", tone: "plain" },
       {
-        label: "CORPUS",
-        value: "six-piece difficulty-graded",
-        tone: "neutral",
-      },
-      {
-        label: "SENSITIVITY",
+        label: "sensitivity",
         value: "54 predeclared conditions",
-        tone: "neutral",
+        tone: "plain",
       },
     ],
     boundary:
@@ -170,25 +138,17 @@ const projects = [
     },
     proof: [
       {
-        label: "REVERSAL",
+        label: "reversal",
         value: "weighting by decade sample size removed the curve",
         tone: "reversal",
       },
       {
-        label: "CORPUS",
+        label: "corpus",
         value: "667,858 rows → 277,925 songs",
-        tone: "neutral",
+        tone: "plain",
       },
-      {
-        label: "TEMPORAL",
-        value: "N = 12 decades",
-        tone: "neutral",
-      },
-      {
-        label: "WEIGHTED",
-        value: "no in-range inverted-U",
-        tone: "neutral",
-      },
+      { label: "temporal", value: "N = 12 decades", tone: "plain" },
+      { label: "weighted", value: "no in-range inverted-U", tone: "plain" },
     ],
     detail:
       "The unweighted result is reproducible but not robust. Genre differences are statistically detectable with substantial overlap.",
@@ -213,19 +173,19 @@ const projects = [
     },
     proof: [
       {
-        label: "VERIFIED",
+        label: "reproduced",
+        value: "140/140 games on a second machine",
+        tone: "matched",
+      },
+      {
+        label: "verified",
         value: "93/100 on held-out seeds 40-139",
         tone: "matched",
       },
       {
-        label: "REPRODUCED",
-        value: "140/140 games reproduced on a second machine",
-        tone: "neutral",
-      },
-      {
-        label: "HARNESS",
-        value: "5.7x harness slowdown found and removed",
-        tone: "neutral",
+        label: "harness",
+        value: "5.7x slowdown found and removed",
+        tone: "plain",
       },
     ],
     detail:
@@ -245,121 +205,200 @@ const order: Record<Route, readonly string[]> = {
   research: ["tonal", "harmonic", "quickbin", "astar", "connect-four"],
 };
 
+function ProofBlock({
+  rows,
+}: {
+  rows: readonly { label: string; value: string; tone: string }[];
+}) {
+  return (
+    <div className="proof">
+      {rows.map((row) => (
+        <span
+          key={row.label}
+          className={row.tone === "plain" ? undefined : `proof-row-${row.tone}`}
+        >
+          <span className="proof-label">{row.label}</span>
+          <span>{row.value}</span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function AudienceProjectGrid() {
   const [route, setRoute] = useState<Route>("industry");
+  const gridRef = useRef<HTMLDivElement>(null);
+  const beforeRef = useRef<Map<string, DOMRect> | null>(null);
   const sortedProjects = order[route].map(
     (id) => projects.find((project) => project.id === id)!,
   );
+
+  function chooseRoute(next: Route) {
+    const grid = gridRef.current;
+    if (grid) {
+      const measured = new Map<string, DOMRect>();
+      grid.querySelectorAll<HTMLElement>("[data-flip]").forEach((el) => {
+        measured.set(el.dataset.flip!, el.getBoundingClientRect());
+      });
+      beforeRef.current = measured;
+    }
+    setRoute(next);
+  }
+
+  // FLIP: cards travel to their new position so "same evidence, different
+  // order" is visible rather than asserted.
+  useLayoutEffect(() => {
+    const before = beforeRef.current;
+    beforeRef.current = null;
+    const grid = gridRef.current;
+    if (!before || !grid) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    grid.querySelectorAll<HTMLElement>("[data-flip]").forEach((el) => {
+      const a = before.get(el.dataset.flip!);
+      if (!a) return;
+      const b = el.getBoundingClientRect();
+      const dx = a.left - b.left;
+      const dy = a.top - b.top;
+      if (!dx && !dy) return;
+      el.style.transition = "none";
+      el.style.transform = `translate(${dx}px, ${dy}px)`;
+      el.style.zIndex = "1";
+      requestAnimationFrame(() => {
+        el.style.transition = "transform 320ms cubic-bezier(.2, .7, .3, 1)";
+        el.style.transform = "";
+      });
+      el.addEventListener(
+        "transitionend",
+        () => {
+          el.style.zIndex = "";
+        },
+        { once: true },
+      );
+    });
+  }, [route]);
 
   return (
     <>
       <section className="hero" aria-labelledby="page-title">
         <div className="hero-identity">
-          <figure className="profile-figure">
-            <img
-              className="profile-photo"
-              src={sitePath("/headshot.png")}
-              width={146}
-              height={219}
-              alt="Zihao (Jason) Zhang"
-            />
-            <figcaption className="eyebrow">
-              <span>Research Engineer</span>
-              <span>Merced, CA</span>
-            </figcaption>
-          </figure>
-          <h1 id="page-title">Zihao (Jason) Zhang</h1>
-          <nav className="identity-links" aria-label="Homepage contact">
-            <a
-              href="https://github.com/TacoRav4"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://www.linkedin.com/in/jasonzzh"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a href="mailto:jasonzhang5@ucmerced.edu">Email</a>
-            <a
-              href={sitePath("/resume.pdf")}
-              download="Zihao_Jason_Zhang_Resume.pdf"
-            >
-              Resume
-            </a>
-          </nav>
-        </div>
-        <div className="hero-copy">
-          <h2>{routeCopy[route].line}</h2>
-          <p>
+          <p className="eyebrow">Research Engineer · Merced, CA</p>
+          <h1 id="page-title">
+            I build machine-learning systems and the benchmarks that decide
+            whether they actually work.
+          </h1>
+          <p className="hero-bio">
             M.S. candidate in Cognitive and Information Sciences at UC Merced,
-            where my research asks how people track tonal structure as music
-            unfolds over time. Most recently I spent a summer at a national lab
-            doing machine learning and benchmark design for metagenome binning.
+            researching how people track tonal structure as music unfolds over
+            time. Most recently a summer at a national lab doing machine
+            learning and benchmark design for metagenome binning.
+          </p>
+          <p className="hero-belief">
             I care more about whether a result reproduces than about how good
             it looked the first time.
           </p>
-          <div className="route-control" aria-labelledby="route-label">
-            <p id="route-label">
-              <strong>Choose a reading route</strong>
-            </p>
-            <div className="route-buttons">
-              {(["industry", "research"] as const).map((candidate) => (
-                <button
-                  key={candidate}
-                  type="button"
-                  aria-pressed={route === candidate}
-                  onClick={() => setRoute(candidate)}
-                >
-                  {candidate === "industry" ? "Industry" : "Research / PhD"}
-                </button>
-              ))}
-            </div>
-            <p className="route-status" aria-live="polite">
-              {routeCopy[route].status}
-              <br />
-              {routeCopy[route].goal}
-            </p>
+          <div className="hero-actions">
+            <a className="cta-button" href="#work">
+              Selected work →
+            </a>
+            <nav className="identity-links" aria-label="Homepage contact">
+              <a
+                href="https://github.com/TacoRav4"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://www.linkedin.com/in/jasonzzh"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+              <a href="mailto:jasonzhang5@ucmerced.edu">Email</a>
+              <a
+                href={sitePath("/resume.pdf")}
+                download="Zihao_Jason_Zhang_Resume.pdf"
+              >
+                Resume
+              </a>
+            </nav>
           </div>
         </div>
+        <figure className="profile-figure">
+          <img
+            className="profile-photo"
+            src={sitePath("/headshot.png")}
+            width={146}
+            height={219}
+            alt="Zihao (Jason) Zhang"
+          />
+        </figure>
       </section>
 
       <section className="section" id="work" aria-labelledby="work-title">
-        <div className="section-heading">
+        <div className="section-heading work-heading">
           <div>
             <p className="eyebrow">05 / Selected work</p>
             <h2 id="work-title">After the first result</h2>
           </div>
-          <p>
-            The problems range from genome binning and pathfinding to music
-            cognition and game-tree search; the build and the question matter
-            as much as the result.
-            <br />
-            <span className="work-index">
-              Genomics · Pathfinding · Music cognition · Corpus statistics ·
-              Game-tree search
-            </span>
-          </p>
+          <div className="work-intro">
+            <p>
+              The problems range from genome binning and pathfinding to music
+              cognition and game-tree search; the build and the question matter
+              as much as the result.
+              <br />
+              <span className="work-index">
+                Genomics · Pathfinding · Music cognition · Corpus statistics ·
+                Game-tree search
+              </span>
+            </p>
+            <div className="route-control" aria-labelledby="route-label">
+              <p id="route-label">
+                <strong>Choose a reading route</strong>
+              </p>
+              <div className="route-buttons">
+                {(["industry", "research"] as const).map((candidate) => (
+                  <button
+                    key={candidate}
+                    type="button"
+                    aria-pressed={route === candidate}
+                    onClick={() => chooseRoute(candidate)}
+                  >
+                    {candidate === "industry" ? "Industry" : "Research / PhD"}
+                  </button>
+                ))}
+              </div>
+              <p className="route-status" aria-live="polite">
+                {routeCopy[route].status}
+                <br />
+                {routeCopy[route].goal}
+                {route === "research" ? (
+                  <>
+                    <br />
+                    {routeCopy.research.line}
+                  </>
+                ) : null}
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="project-grid">
+        <div className="project-grid" ref={gridRef}>
           {sortedProjects.map((project) => {
             if ("layout" in project && project.layout === "split") {
               return (
                 <article
                   className={`project-card ${project.className}`}
                   key={project.id}
+                  data-flip={project.id}
                 >
                   <div className="wide-card-copy">
                     <p className="eyebrow">{project.eyebrow}</p>
                     <h3>{project.title}</h3>
                     <p>{project.story}</p>
                     <p className="card-why">{project.why[route]}</p>
-                    <ProofBlock proof={project.proof} />
+                    <ProofBlock rows={project.proof} />
                     <p className="boundary">{project.boundary}</p>
                   </div>
                   <figure className="card-detail-figure wide-card-visual">
@@ -381,6 +420,7 @@ export default function AudienceProjectGrid() {
               <article
                 className={`project-card ${project.className}`}
                 key={project.id}
+                data-flip={project.id}
               >
                 <p className="eyebrow">{project.eyebrow}</p>
                 <h3>{project.title}</h3>
@@ -401,7 +441,7 @@ export default function AudienceProjectGrid() {
                     )}
                   </figure>
                 )}
-                <ProofBlock proof={project.proof} />
+                <ProofBlock rows={project.proof} />
                 {"boundary" in project && (
                   <p className="boundary">{project.boundary}</p>
                 )}

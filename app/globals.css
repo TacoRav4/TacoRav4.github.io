@@ -292,6 +292,10 @@ summary:focus-visible {
   align-items: start;
 }
 
+.work-heading .route-control {
+  grid-column: 2;
+}
+
 .section-heading h2 {
   max-width: 12ch;
   margin: 0;
@@ -305,7 +309,7 @@ summary:focus-visible {
 }
 
 .section-heading > p,
-.section-heading > div > p:first-child {
+.section-heading > div:not(.route-control) > p:first-child {
   max-width: 42rem;
   margin: 0;
   color: var(--graphite);
@@ -833,6 +837,10 @@ summary {
   .case-summary,
   .evidence-spine {
     grid-template-columns: 1fr;
+  }
+
+  .work-heading .route-control {
+    grid-column: 1;
   }
 
   .hero {

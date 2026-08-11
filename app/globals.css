@@ -288,15 +288,6 @@ summary:focus-visible {
   margin-bottom: 2rem;
 }
 
-.section-heading.work-heading {
-  align-items: start;
-  row-gap: 0.5rem;
-}
-
-.work-heading .route-control {
-  grid-column: 2;
-}
-
 .section-heading h2 {
   max-width: 12ch;
   margin: 0;
@@ -838,10 +829,6 @@ summary {
   .case-summary,
   .evidence-spine {
     grid-template-columns: 1fr;
-  }
-
-  .work-heading .route-control {
-    grid-column: 1;
   }
 
   .hero {

@@ -337,7 +337,7 @@ export default function AudienceProjectGrid() {
       </section>
 
       <section className="section" id="work" aria-labelledby="work-title">
-        <div className="section-heading work-heading">
+        <div className="section-heading">
           <div>
             <p className="eyebrow">05 / Selected work</p>
             <h2 id="work-title">After the first result</h2>
@@ -353,34 +353,34 @@ export default function AudienceProjectGrid() {
                 Game-tree search
               </span>
             </p>
-          </div>
-          <div className="route-control" aria-labelledby="route-label">
-            <p id="route-label">
-              <strong>Choose a reading route</strong>
-            </p>
-            <div className="route-buttons">
-              {(["industry", "research"] as const).map((candidate) => (
-                <button
-                  key={candidate}
-                  type="button"
-                  aria-pressed={route === candidate}
-                  onClick={() => chooseRoute(candidate)}
-                >
-                  {candidate === "industry" ? "Industry" : "Research / PhD"}
-                </button>
-              ))}
+            <div className="route-control" aria-labelledby="route-label">
+              <p id="route-label">
+                <strong>Choose a reading route</strong>
+              </p>
+              <div className="route-buttons">
+                {(["industry", "research"] as const).map((candidate) => (
+                  <button
+                    key={candidate}
+                    type="button"
+                    aria-pressed={route === candidate}
+                    onClick={() => chooseRoute(candidate)}
+                  >
+                    {candidate === "industry" ? "Industry" : "Research / PhD"}
+                  </button>
+                ))}
+              </div>
+              <p className="route-status" aria-live="polite">
+                {routeCopy[route].status}
+                <br />
+                {routeCopy[route].goal}
+                {route === "research" ? (
+                  <>
+                    <br />
+                    {routeCopy.research.line}
+                  </>
+                ) : null}
+              </p>
             </div>
-            <p className="route-status" aria-live="polite">
-              {routeCopy[route].status}
-              <br />
-              {routeCopy[route].goal}
-              {route === "research" ? (
-                <>
-                  <br />
-                  {routeCopy.research.line}
-                </>
-              ) : null}
-            </p>
           </div>
         </div>
 

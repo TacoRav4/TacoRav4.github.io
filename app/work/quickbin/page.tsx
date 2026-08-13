@@ -14,11 +14,14 @@ export default function QuickBinCaseStudy() {
             <h1>Building trustworthy evidence for neural metagenome binning</h1>
             <div className="case-summary">
               <p>
-                I led the design and validation of PacBio-specific training and
-                evaluation workflows around QuickBin. Retraining lowered
-                contamination internally, but the model ranking reversed in an
-                external evaluation—turning the work into a study of
-                generalization, experimental contracts, and honest evaluation.
+                I adapted QuickBin&apos;s terminal network and evaluation workflow
+                to PacBio HiFi, then built leakage-safe tests to determine
+                whether the gains were real. Both retrained models reduced
+                contamination on held-out synthetic data and on one external
+                CAMI II community. A fair internal shared-U2500 comparison also
+                placed QuickBin with the selected candidate first by Total Score
+                among the tested QuickBin variants and MetaBAT2; CAMI II exposed
+                a recovery tradeoff that changed the composite ranking.
               </p>
               <ul className="meta-list">
                 <li>Python · Java · Bash</li>
@@ -39,7 +42,7 @@ export default function QuickBinCaseStudy() {
               <li>Question</li>
               <li>Contract</li>
               <li>Internal result</li>
-              <li>External reversal</li>
+              <li>External test</li>
               <li>Engineering</li>
               <li>Attribution</li>
               <li>Next test</li>
@@ -48,12 +51,62 @@ export default function QuickBinCaseStudy() {
             <div className="evidence-sections">
               <section>
                 <p className="eyebrow">01 · Question</p>
-                <h2>Would a PacBio-specific model transfer?</h2>
+                <h2>Can PacBio-specific retraining improve QuickBin?</h2>
                 <p>
                   QuickBin and its surrounding infrastructure already existed.
-                  The internship question was whether a PacBio-specific training
-                  and evaluation workflow could improve binning without hiding
-                  contamination/recovery tradeoffs.
+                  The internship had three linked goals: build a PacBio-specific
+                  training and evaluation workflow, retrain the terminal
+                  network, and determine whether any improvement survived data
+                  that the same pipeline had not generated.
+                </p>
+                <h3>How one merge decision escalates</h3>
+                <p>
+                  QuickBin&apos;s public source uses five escalating gates, not a
+                  three-stage pipeline. Cheap checks reject pairs early; only
+                  the pairs that survive reach the terminal neural network.
+                </p>
+                <table className="gate-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Gate</th>
+                      <th scope="col">Check</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>
+                        GC, HH and CAGA differences; depth ratio and covariance
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Trimer composition difference</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>
+                        Tetramer difference with depth ratio and a k-mer
+                        probability estimate
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4</th>
+                      <td>
+                        Pentamer difference, with a weaker fallback for short
+                        contigs
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5</th>
+                      <td>Small neural network for the pairs still unresolved</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p className="boundary">
+                  The homepage cover compresses this into an audience-level
+                  flow. Its funnel is schematic; no per-gate survival counts
+                  are available.
                 </p>
               </section>
 
@@ -208,42 +261,53 @@ export default function QuickBinCaseStudy() {
               <section>
                 <p className="eyebrow">03 · Internal result</p>
                 <h2>Lower contamination, with a recovery tradeoff</h2>
-                <div
-                  className="comparison"
-                  aria-label="Internal result comparison"
-                >
-                  <div className="metric">
-                    Shipping contamination<strong>1.7530</strong>
-                  </div>
-                  <span className="arrow" aria-hidden="true">
-                    →
-                  </span>
-                  <div className="metric">
-                    AM1 contamination<strong>1.3724</strong>
-                  </div>
-                </div>
-                <p className="proof">
-                  <span>
-                    contig recovery: 92.580% → 91.723% · Total Score: 263.43 →
-                    265.06
-                  </span>
-                </p>
+                <figure className="case-figure">
+                  <img
+                    src={sitePath("/quickbin/heldout-contamination.png")}
+                    width={2450}
+                    height={915}
+                    loading="lazy"
+                    decoding="async"
+                    alt="Horizontal bars compare Shipping, Champion and AM1 contamination on 279 validation genomes and 299 test genomes held out before training. On test genomes, contamination decreases from 1.7530 for Shipping to 1.4690 for Champion and 1.3724 for AM1, while contig recovery changes from 92.580 percent to 90.930 and 91.723 percent."
+                  />
+                  <figcaption>
+                    Genome-held-out validation and test splits. Lower
+                    contamination came with lower contig recovery; AM1 recovered
+                    more test contigs than the selected Champion while also
+                    lowering contamination further.
+                  </figcaption>
+                </figure>
                 <p>
-                  The candidate improved contamination control internally, but
-                  the result was already multidimensional rather than an
-                  unqualified win.
+                  Both retrained models improved contamination control on the
+                  held-out internal splits. Recovery and Total Score showed why
+                  the result still had to be evaluated as a tradeoff rather than
+                  a single-metric win.
+                </p>
+                <h3>A separate system comparison</h3>
+                <p>
+                  On full scale2000 restricted to the same 62,694-contig
+                  shared-U2500 universe, all three QuickBin configurations
+                  scored above MetaBAT2. QuickBin with the selected candidate
+                  had the highest Total Score: 1431.16, compared with 1358.08
+                  for Shipping, 1428.51 for AM1, and 1135.43 for MetaBAT2.
+                </p>
+                <p className="boundary">
+                  This was one internal synthetic comparison; MetaBAT2 used seed
+                  1, with no multi-seed uncertainty estimate.
                 </p>
               </section>
 
               <section className="reversal">
-                <p className="eyebrow">04 · External reversal</p>
-                <h2>The ordering did not survive the harder setting</h2>
+                <p className="eyebrow">04 · External evaluation</p>
+                <h2>Contamination held; the composite ranking changed</h2>
                 <p>
-                  On CAMI II PacBio sample 14, both retrained models reduced
-                  contamination, while Shipping retained the highest Total
-                  Score. The external comparison involved one community and a
-                  changed QuickBin runtime, so it cannot isolate distribution
-                  shift from runtime differences.
+                  The external pipeline completed and graded all three networks
+                  on CAMI II PacBio sample 14. Both retrained models again
+                  reduced contamination, while Shipping retained the highest
+                  Total Score because the retrained models recovered less. The
+                  comparison involved one community and a changed QuickBin
+                  runtime, so it cannot isolate distribution shift from runtime
+                  differences.
                 </p>
                 <figure className="quickbin-diagram">
                   <svg
@@ -252,14 +316,15 @@ export default function QuickBinCaseStudy() {
                     aria-labelledby="reversal-diagram-title reversal-diagram-desc"
                   >
                     <title id="reversal-diagram-title">
-                      Internal improvement and external ordering reversal
+                      Internal contamination improvement and external tradeoff
                     </title>
                     <desc id="reversal-diagram-desc">
                       The internal trace shows contamination decreasing from
                       Shipping 1.7530 to AM1 1.3724. The external CAMI II trace
                       shows Shipping retaining the highest Total Score while
-                      AM1 and AM2 had lower contamination but lower Total Score,
-                      so the ordering did not carry over.
+                      AM1 and the contamination-focused candidate had lower
+                      contamination but lower Total Score, so the ordering did
+                      not carry over.
                     </desc>
                     <defs>
                       <marker
@@ -354,7 +419,7 @@ export default function QuickBinCaseStudy() {
                       height="80"
                     />
                     <text className="diagram-label" x="755" y="225">
-                      <tspan x="755">AM1 / AM2</tspan>
+                      <tspan x="755">Candidate / AM1</tspan>
                       <tspan className="diagram-small" x="755" dy="23">
                         lower contamination
                       </tspan>
@@ -428,20 +493,30 @@ export default function QuickBinCaseStudy() {
                   </article>
                 </div>
                 <p className="boundary">
-                  No JGI code, data, model, internal figure, report, or
-                  repository artifact is approved for publication by this
-                  local build.
+                  No JGI code, data, model, internal figure, report, or repository
+                  artifact is included. The figures are newly drawn from cleared
+                  facts, open-source BBTools architecture, synthetic genomes,
+                  and public CAMI II data.
                 </p>
               </section>
 
               <section>
                 <p className="eyebrow">07 · Limit and next test</p>
-                <h2>Separate transfer from runtime and community effects</h2>
+                <h2>Test more communities and operating points</h2>
                 <p>
-                  A stronger next experiment would hold runtime constant and use
-                  multiple independently constructed communities. The current
-                  result supports a narrower claim: the internal ordering did
-                  not transfer robustly to the observed external context.
+                  A stronger continuation would hold runtime constant, add
+                  independently constructed PacBio communities, and evaluate
+                  swept operating curves rather than single points. With
+                  separate samples and frozen leakage-safe splits, a future
+                  CAMI-derived training expansion could test how broader
+                  training changes the recovery tradeoff without leaking into
+                  the protected external benchmark.
+                </p>
+                <p>
+                  The current result establishes a working external evaluation
+                  and repeatable contamination reduction. It does not yet
+                  establish the best composite operating point for independent
+                  communities.
                 </p>
                 <a
                   className="card-link"

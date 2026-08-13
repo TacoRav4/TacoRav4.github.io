@@ -10,7 +10,8 @@ export default function Home() {
           <h2 id="thread-title">One research thread</h2>
           <p>
             The two music projects ask how statistical structure becomes
-            expectation—and what we learn when the prediction breaks.
+            expectation—and how representation and evidence reshape the
+            explanation.
           </p>
         </div>
         <div className="thread">
@@ -110,16 +111,17 @@ export default function Home() {
           <p>
             Zihao (Jason) Zhang is an M.S. candidate in Cognitive and
             Information Sciences at UC Merced. He builds machine-learning and
-            scientific software, then tests whether the result survives a
-            harder setting. At the Joint Genome Institute, he designed
-            leakage-safe PacBio benchmarks and training workflows for neural
-            metagenome binning, including external evaluation that narrowed an
-            internal improvement claim. In computational music research, he
-            traced apparent model gains to representation limits in real MIDI
-            and challenged a harmonic-surprisal trend through weighted
-            sensitivity analysis. His work combines reproducible pipelines,
-            source-level debugging, and a willingness to treat reversals as
-            results worth explaining.
+            scientific software, then tests what improved, where it holds, and
+            what evidence should come next. At the Joint Genome Institute, he
+            designed leakage-safe PacBio training and evaluation workflows for
+            neural metagenome binning. Both retrained models reduced
+            contamination on held-out synthetic data and one external CAMI II
+            community; a recovery tradeoff in that external test set the next
+            validation questions. In computational music research, he studies
+            how statistical structure becomes expectation, using model
+            comparisons, representation analysis, and sensitivity checks to
+            refine the explanation. His work combines reproducible pipelines,
+            source-level debugging, and claims calibrated to the evidence.
           </p>
         </div>
       </section>

@@ -8,14 +8,14 @@ type Route = "industry" | "research";
 const routeCopy = {
   industry: {
     status:
-      "Industry view. The same projects, ordered to foreground systems work and validation.",
-    goal: "Goal: show whether a machine-learning system's improvement survives the setting where it is meant to work.",
+      "Industry view. The same projects, ordered to foreground systems work, measurable improvement, and validation.",
+    goal: "Goal: show what improved, where it held, and what evidence the system still needs.",
   },
   research: {
     status:
-      "Research view. The same projects, ordered to foreground failed predictions and revised explanations.",
-    goal: "Goal: show where a model's predictions broke and how the explanation changed.",
-    line: "I use computational models and large-scale corpora to find where a theory's predictions fail, then work out why.",
+      "Research view. The same projects, ordered to foreground models, evidence, and revised explanations.",
+    goal: "Goal: show what a model explained, where its predictions broke, and how the evidence changed the next experiment.",
+    line: "I use computational models and large-scale corpora to test how statistical structure becomes expectation, then let the evidence refine the explanation.",
   },
 } satisfies Record<Route, { status: string; goal: string }> & {
   research: { line: string };
@@ -24,31 +24,49 @@ const routeCopy = {
 const projects = [
   {
     id: "quickbin",
-    className: "featured no-figure",
+    className: "featured",
     eyebrow: "QuickBin · Featured experience",
     title: "Building trustworthy evidence for neural metagenome binning",
     story:
-      "I built a genome-held-out PacBio benchmark to test whether retraining would transfer beyond internal evaluation. It lowered contamination internally, but external evaluation reversed the model ordering.",
+      "I retrained QuickBin's terminal network for PacBio HiFi and built a leakage-safe workflow to test it. Contamination fell on held-out synthetic data and one CAMI II community. In a fair internal comparison, QuickBin with the selected candidate also led MetaBAT2 by Total Score; CAMI II exposed a recovery tradeoff, so that composite ranking did not carry over.",
     why: {
-      industry: "Industry lens: evaluation systems and transfer risk.",
-      research: "Research lens: an external reversal narrowed the claim.",
+      industry:
+        "Industry lens: a working external pipeline, measurable gains, and clear next tests.",
+      research:
+        "Research lens: contamination reduction held; composite ranking did not.",
     },
     proof: [
       {
-        label: "reversal",
-        value: "external evaluation reversed the model ordering",
-        tone: "reversal",
+        label: "held",
+        value: "contamination fell in internal and CAMI II evaluations",
+        tone: "matched",
       },
-      { label: "benchmark", value: "2,013 genomes · 8.29 Gbp", tone: "plain" },
       {
         label: "internal",
-        value: "contamination 1.7530 → 1.3724",
+        value: "2,013 genomes · AM1 contamination 1.7530 → 1.3724",
         tone: "plain",
       },
-      { label: "external", value: "CAMI community: N = 1", tone: "plain" },
+      {
+        label: "vs MetaBAT2",
+        value: "shared-U2500 Total Score 1431 vs 1135 · MetaBAT2 seed 1",
+        tone: "plain",
+      },
+      {
+        label: "external",
+        value: "composite ranking changed · CAMI II, N = 1",
+        tone: "reversal",
+      },
     ],
     boundary:
-      "Public V1: prose and newly drawn explanation only; no JGI artifacts.",
+      "Internal results use synthetic genomes; external evaluation uses public CAMI II. QuickBin is part of open-source BBTools.",
+    detail:
+      "Five gates; Jason retrained the terminal network for the harder pairs.",
+    visual: {
+      src: "/quickbin/merge-decision.svg",
+      width: 960,
+      height: 430,
+      alt: "A blue and amber candidate contig pair passes through composition and coverage filters to Jason's retrained 28-feature neural network. Rejecting a pair from different genomes keeps two clean bins, while a wrong merge produces one contaminated bin.",
+    },
     href: "/work/quickbin/",
   },
   {

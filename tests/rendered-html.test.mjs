@@ -36,6 +36,8 @@ test("prerenders the portfolio homepage without starter content", async () => {
     html,
     /codex-preview|SkeletonPreview|react-loading-skeleton|vinext|wrangler/i,
   );
+  assert.match(html, /what improved, where it held/);
+  assert.match(html, /claims calibrated to the evidence/);
 });
 
 test("prerenders both deep case studies", async () => {
@@ -45,6 +47,9 @@ test("prerenders both deep case studies", async () => {
   ]);
 
   assert.match(quickbinHtml, /Split genomes before examples/);
+  assert.match(quickbinHtml, /Contamination held; the composite ranking changed/);
+  assert.match(quickbinHtml, /shared-U2500 universe/);
+  assert.match(quickbinHtml, /Candidate \/ AM1/);
   assert.match(quickbinHtml, /External community: N = 1/);
   assert.match(quickbinHtml, /No JGI code, data, model/);
   assert.match(tonalHtml, /synthetic labeled accuracy, not real-MIDI accuracy/);
@@ -120,6 +125,8 @@ test("emits static assets and route-specific metadata", async () => {
     "astar/path-comparison.svg",
     "connect-four/benchmark-sequence.svg",
     "harmonic/surprisal-over-time.png",
+    "quickbin/heldout-contamination.png",
+    "quickbin/merge-decision.svg",
     "tonal/circle-of-fifths-ema-vs-srn.png",
     "tonal/gate-sensitivity-pareto.png",
   ]) {

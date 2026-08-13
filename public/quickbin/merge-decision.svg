@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+  <title id="title">One QuickBin merge decision from candidate pair to outcome</title>
+  <desc id="desc">A blue and amber candidate contig pair passes through composition and coverage filters. Pairs that remain difficult reach the retrained neural network, which turns 28 features into a merge score. Rejecting a pair from different genomes keeps two clean bins; a wrong merge produces one contaminated bin.</desc>
+
+  <style>
+    .bg { fill: #faf8f3; }
+    .panel { fill: #fffdf9; stroke: #cdd2cf; stroke-width: 1.5; }
+    .mine-panel { fill: #f0f6f4; stroke: #07716c; stroke-width: 2.5; }
+    .kicker { font: 700 15px ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .12em; fill: #8b9296; }
+    .number { font: 700 13px ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .1em; fill: #aeb5b4; }
+    .heading { font: 700 17px Inter, system-ui, sans-serif; fill: #172023; }
+    .label { font: 650 14px ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: .04em; fill: #626d72; }
+    .question { font: 700 16px Inter, system-ui, sans-serif; fill: #172023; }
+    .good { font: 700 15px Inter, system-ui, sans-serif; fill: #07716c; }
+    .bad { font: 700 15px Inter, system-ui, sans-serif; fill: #b84a32; }
+    .flow { fill: none; stroke: #b9c1bf; stroke-width: 3; }
+    .edge { stroke: #9fc2bd; stroke-width: 1.4; }
+    .node { fill: #07716c; }
+    .input-node { fill: #8fb3ae; }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#b9c1bf"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="960" height="430"/>
+  <text class="kicker" x="24" y="30">ONE MERGE DECISION</text>
+
+  <!-- 01 candidate pair : x 24-226 -->
+  <rect class="panel" x="24" y="52" width="202" height="330" rx="8"/>
+  <text class="number"  x="48" y="84">01</text>
+  <text class="heading" x="48" y="110">Candidate pair</text>
+
+  <rect x="48" y="146" width="128" height="19" rx="9.5" fill="#315f9b"/>
+  <rect x="48" y="171" width="80"  height="19" rx="9.5" fill="#315f9b" opacity=".55"/>
+  <text class="label" x="48" y="211">CONTIG A</text>
+
+  <text class="question" x="125" y="247" text-anchor="middle">same genome?</text>
+
+  <rect x="48" y="272" width="96"  height="19" rx="9.5" fill="#c9871f"/>
+  <rect x="48" y="297" width="134" height="19" rx="9.5" fill="#c9871f" opacity=".55"/>
+  <text class="label" x="48" y="337">CONTIG B</text>
+
+  <path class="flow" d="M234 217h20" marker-end="url(#arrow)"/>
+
+  <!-- 02 fast filters : x 260-462 -->
+  <rect class="panel" x="260" y="52" width="202" height="330" rx="8"/>
+  <text class="number"  x="284" y="84">02</text>
+  <text class="heading" x="284" y="110">Fast filters</text>
+
+  <path d="M288 148h146l-51 78v66h-44v-66z" fill="#e6e9e6" stroke="#cdd2cf" stroke-width="1.5"/>
+  <text class="label" x="361" y="180" text-anchor="middle">GC + DEPTH</text>
+  <text class="label" x="361" y="207" text-anchor="middle">K-MERS</text>
+
+  <path d="M288 244l17 17m0-17-17 17" fill="none" stroke="#b84a32" stroke-width="3" stroke-linecap="round" opacity=".75"/>
+  <path d="M417 244l17 17m0-17-17 17" fill="none" stroke="#b84a32" stroke-width="3" stroke-linecap="round" opacity=".75"/>
+  <text class="label" x="361" y="337" text-anchor="middle">EARLY REJECT</text>
+
+  <path class="flow" d="M470 217h20" marker-end="url(#arrow)"/>
+
+  <!-- 03 retrained network : x 496-698 -->
+  <rect class="mine-panel" x="496" y="52" width="202" height="330" rx="8"/>
+  <text class="number"  x="520" y="84">03</text>
+  <text class="heading" x="520" y="110">Retrained network</text>
+
+  <g class="edge">
+    <path d="M536 168 586 143 M536 168 586 193 M536 168 586 243
+             M536 208 586 143 M536 208 586 193 M536 208 586 243
+             M536 248 586 143 M536 248 586 193 M536 248 586 243
+             M586 143 630 173 M586 143 630 223
+             M586 193 630 173 M586 193 630 223
+             M586 243 630 173 M586 243 630 223
+             M630 173 668 198 M630 223 668 198"/>
+  </g>
+  <g class="input-node">
+    <circle cx="536" cy="168" r="8.5"/><circle cx="536" cy="208" r="8.5"/><circle cx="536" cy="248" r="8.5"/>
+  </g>
+  <g class="node">
+    <circle cx="586" cy="143" r="8.5"/><circle cx="586" cy="193" r="8.5"/><circle cx="586" cy="243" r="8.5"/>
+    <circle cx="630" cy="173" r="8.5"/><circle cx="630" cy="223" r="8.5"/>
+    <circle cx="668" cy="198" r="10.5"/>
+  </g>
+  <text class="label" x="597" y="300" text-anchor="middle">28 FEATURES → SCORE</text>
+  <text class="good"  x="597" y="337" text-anchor="middle">Jason retrained this</text>
+
+  <path class="flow" d="M706 217h20" marker-end="url(#arrow)"/>
+
+  <!-- 04 outcome : x 732-934 -->
+  <rect class="panel" x="732" y="52" width="202" height="330" rx="8"/>
+  <text class="number"  x="756" y="84">04</text>
+  <text class="heading" x="756" y="110">Outcome</text>
+
+  <circle cx="797" cy="172" r="25" fill="none" stroke="#07716c" stroke-width="2.5"/>
+  <circle cx="797" cy="172" r="8" fill="#315f9b"/>
+  <circle cx="869" cy="172" r="25" fill="none" stroke="#07716c" stroke-width="2.5"/>
+  <circle cx="869" cy="172" r="8" fill="#c9871f"/>
+  <text class="good" x="833" y="219" text-anchor="middle">REJECT · CLEAN</text>
+
+  <line x1="758" y1="243" x2="908" y2="243" stroke="#cdd2cf" stroke-width="1.5"/>
+
+  <circle cx="833" cy="292" r="27" fill="none" stroke="#b84a32" stroke-width="2.5"/>
+  <circle cx="825" cy="288" r="8" fill="#315f9b"/>
+  <circle cx="842" cy="297" r="8" fill="#c9871f"/>
+  <text class="bad" x="833" y="343" text-anchor="middle">WRONG MERGE</text>
+  <text class="bad" x="833" y="362" text-anchor="middle">CONTAMINATED</text>
+</svg>

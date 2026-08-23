@@ -22,9 +22,9 @@ export function SiteFooter() {
       <div className="footer-summary">
         <span>Zihao (Jason) Zhang · Research Engineer</span>
         <p>
-          Graduating in August 2026. I&apos;m looking for work in machine
-          learning, data engineering, or scientific computing, and I&apos;m
-          happy to talk about anything adjacent.
+          Graduating in August 2026. I&apos;m looking for machine-learning and
+          data-engineering roles, and I&apos;m happy to talk about anything
+          adjacent.
         </p>
       </div>
       <nav aria-label="Contact">

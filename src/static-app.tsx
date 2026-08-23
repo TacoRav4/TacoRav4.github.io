@@ -2,6 +2,7 @@ import RootLayout, { metadata as siteMetadata } from "../app/layout";
 import Home from "../app/page";
 import QuickBinCaseStudy from "../app/work/quickbin/page";
 import TonalInferenceCaseStudy from "../app/work/tonal-inference/page";
+import ConnectFourCaseStudy from "../app/work/connect-four/page";
 
 type RouteDefinition = {
   pathname: string;
@@ -21,15 +22,22 @@ export const staticRoutes: RouteDefinition[] = [
     pathname: "/work/quickbin/",
     title: "QuickBin / JGI Experience — Zihao (Jason) Zhang",
     description:
-      "A case study in leakage-safe benchmark design, internal model tradeoffs, and an external ordering reversal.",
+      "Retraining QuickBin for PacBio HiFi under a leakage-safe split, and the external test that reordered the ranking.",
     Page: QuickBinCaseStudy,
   },
   {
     pathname: "/work/tonal-inference/",
     title: "Tonal Inference Modeling — Zihao (Jason) Zhang",
     description:
-      "A case study in learned recurrence, real-MIDI transfer failure, and representation diagnosis.",
+      "A learned memory beat the baseline on synthetic data. Real MIDI then exposed the representation underneath.",
     Page: TonalInferenceCaseStudy,
+  },
+  {
+    pathname: "/work/connect-four/",
+    title: "Connect Four Benchmark Audit — Zihao (Jason) Zhang",
+    description:
+      "Fixing the benchmark before trusting the agent: a frozen holdout, reproduced game-for-game on a second machine.",
+    Page: ConnectFourCaseStudy,
   },
 ];
 

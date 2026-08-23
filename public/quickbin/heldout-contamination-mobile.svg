@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="302.4pt" height="417.6pt" viewBox="0 0 302.4 417.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-22T23:15:28.138049</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.9.4, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 417.6 
+L 302.4 417.6 
+L 302.4 0 
+L 0 0 
+z
+" style="fill: #f9f7f2"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 66.528 161.317333 
+L 293.328 161.317333 
+L 293.328 37.584 
+L 66.528 37.584 
+z
+" style="fill: #f9f7f2"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 66.528 161.317333 
+L 66.528 37.584 
+" clip-path="url(#pa9bf648500)" style="fill: none; stroke: #cdd2cf; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 96.768 161.317333 
+L 96.768 37.584 
+" clip-path="url(#pa9bf648500)" style="fill: none; stroke: #cdd2cf; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 127.008 161.317333 
+L 127.008 37.584 
+" clip-path="url(#pa9bf648500)" style="fill: none; stroke: #cdd2cf; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 157.248 161.317333 
+L 157.248 37.584 
+" clip-path="url(#pa9bf648500)" style="fill: none; stroke: #cdd2cf; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 187.488 161.317333 
+L 187.488 37.584 
+" clip-path="url(#pa9bf648500)" style="fill: none; stroke: #cdd2cf; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_11"/>
+     <g id="text_1">
+      <text style="fill: #172023; font: 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: end" x="63.028" y="65.533023" transform="rotate(-0 63.028 65.533023)">Shipping</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_12"/>
+     <g id="text_2">
+      <text style="fill: #172023; font: 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: end" x="63.028" y="104.19969" transform="rotate(-0 63.028 104.19969)">Champion</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_13"/>
+     <g id="text_3">
+      <text style="fill: #172023; font: 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: end" x="63.028" y="142.866357" transform="rotate(-0 63.028 142.866357)">AM1</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 66.528 71.997333 
+L 191.437344 71.997333 
+L 191.437344 49.570667 
+L 66.528 49.570667 
+z
+" clip-path="url(#pa9bf648500)" style="fill: #626d72"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 66.528 110.664 
+L 138.583872 110.664 
+L 138.583872 88.237333 
+L 66.528 88.237333 
+z
+" clip-path="url(#pa9bf648500)" style="fill: #07716c"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 66.528 149.330667 
+L 138.819744 149.330667 
+L 138.819744 126.904 
+L 66.528 126.904 
+z
+" clip-path="url(#pa9bf648500)" style="fill: #07716c"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 66.528 161.317333 
+L 293.328 161.317333 
+" style="fill: none; stroke: #cdd2cf; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_4">
+    <text style="fill: #f9f7f2; font: 12.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: end" x="187.808544" y="64.266422" transform="rotate(-0 187.808544 64.266422)">2.0653</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: start" x="195.9552" y="63.709234" transform="rotate(-0 195.9552 63.709234)">recovery 93.901%</text>
+   </g>
+   <g id="text_6">
+    <text style="fill: #f9f7f2; font: 700 12.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: end" x="134.955072" y="102.899885" transform="rotate(-0 134.955072 102.899885)">1.1914</text>
+   </g>
+   <g id="text_7">
+    <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: start" x="195.9552" y="102.375901" transform="rotate(-0 195.9552 102.375901)">recovery 91.646%</text>
+   </g>
+   <g id="text_8">
+    <text style="fill: #f9f7f2; font: 700 12.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: end" x="135.190944" y="141.566552" transform="rotate(-0 135.190944 141.566552)">1.1953</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: start" x="195.9552" y="141.042568" transform="rotate(-0 195.9552 141.042568)">recovery 92.323%</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #172023; font: 700 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: start" x="66.528" y="29.584" transform="rotate(-0 66.528 29.584)">Validation · 279 genomes</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_7">
+    <path d="M 66.528 371.664 
+L 293.328 371.664 
+L 293.328 247.930667 
+L 66.528 247.930667 
+z
+" style="fill: #f9f7f2"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_6">
+     <g id="line2d_14">
+      <path d="M 66.528 371.664 
+L 66.528 247.930667 
+" clip-path="url(#p854332dfe2)" style="fill: none; stroke: #cdd2cf; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15"/>
+     <g id="text_11">
+      <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: middle" x="66.528" y="383.198141" transform="rotate(-0 66.528 383.198141)">0</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_16">
+      <path d="M 96.768 371.664 
+L 96.768 247.930667 
+" clip-path="url(#p854332dfe2)" style="fill: none; stroke: #cdd2cf; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_17"/>
+     <g id="text_12">
+      <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: middle" x="96.768" y="383.198141" transform="rotate(-0 96.768 383.198141)">0.5</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_18">
+      <path d="M 127.008 371.664 
+L 127.008 247.930667 
+" clip-path="url(#p854332dfe2)" style="fill: none; stroke: #cdd2cf; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_19"/>
+     <g id="text_13">
+      <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: middle" x="127.008" y="383.198141" transform="rotate(-0 127.008 383.198141)">1.0</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_20">
+      <path d="M 157.248 371.664 
+L 157.248 247.930667 
+" clip-path="url(#p854332dfe2)" style="fill: none; stroke: #cdd2cf; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_21"/>
+     <g id="text_14">
+      <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: middle" x="157.248" y="383.198141" transform="rotate(-0 157.248 383.198141)">1.5</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_22">
+      <path d="M 187.488 371.664 
+L 187.488 247.930667 
+" clip-path="url(#p854332dfe2)" style="fill: none; stroke: #cdd2cf; stroke-opacity: 0.7; stroke-width: 0.7; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_23"/>
+     <g id="text_15">
+      <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: middle" x="187.488" y="383.198141" transform="rotate(-0 187.488 383.198141)">2.0</text>
+     </g>
+    </g>
+    <g id="text_16">
+     <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: middle" x="179.928" y="401.415953" transform="rotate(-0 179.928 401.415953)">contamination score · lower is better</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_4">
+     <g id="line2d_24"/>
+     <g id="text_17">
+      <text style="fill: #172023; font: 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: end" x="63.028" y="275.87969" transform="rotate(-0 63.028 275.87969)">Shipping</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_25"/>
+     <g id="text_18">
+      <text style="fill: #172023; font: 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: end" x="63.028" y="314.546357" transform="rotate(-0 63.028 314.546357)">Champion</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_26"/>
+     <g id="text_19">
+      <text style="fill: #172023; font: 12.5px Inter, ui-sans-serif, system-ui, sans-serif; text-anchor: end" x="63.028" y="353.213023" transform="rotate(-0 63.028 353.213023)">AM1</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_8">
+    <path d="M 66.528 282.344 
+L 172.54944 282.344 
+L 172.54944 259.917333 
+L 66.528 259.917333 
+z
+" clip-path="url(#p854332dfe2)" style="fill: #626d72"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 66.528 321.010667 
+L 155.37312 321.010667 
+L 155.37312 298.584 
+L 66.528 298.584 
+z
+" clip-path="url(#p854332dfe2)" style="fill: #07716c"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 66.528 359.677333 
+L 149.530752 359.677333 
+L 149.530752 337.250667 
+L 66.528 337.250667 
+z
+" clip-path="url(#p854332dfe2)" style="fill: #07716c"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 66.528 371.664 
+L 293.328 371.664 
+" style="fill: none; stroke: #cdd2cf; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_20">
+    <text style="fill: #f9f7f2; font: 12.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: end" x="168.92064" y="274.613089" transform="rotate(-0 168.92064 274.613089)">1.7530</text>
+   </g>
+   <g id="text_21">
+    <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: start" x="195.9552" y="274.055901" transform="rotate(-0 195.9552 274.055901)">recovery 92.580%</text>
+   </g>
+   <g id="text_22">
+    <text style="fill: #f9f7f2; font: 700 12.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: end" x="151.74432" y="313.246552" transform="rotate(-0 151.74432 313.246552)">1.4690</text>
+   </g>
+   <g id="text_23">
+    <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: start" x="195.9552" y="312.722568" transform="rotate(-0 195.9552 312.722568)">recovery 90.930%</text>
+   </g>
+   <g id="text_24">
+    <text style="fill: #f9f7f2; font: 700 12.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: end" x="145.901952" y="351.913219" transform="rotate(-0 145.901952 351.913219)">1.3724</text>
+   </g>
+   <g id="text_25">
+    <text style="fill: #626d72; font: 10.5px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: start" x="195.9552" y="351.389234" transform="rotate(-0 195.9552 351.389234)">recovery 91.723%</text>
+   </g>
+   <g id="text_26">
+    <text style="fill: #172023; font: 700 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; text-anchor: start" x="66.528" y="239.930667" transform="rotate(-0 66.528 239.930667)">Test · 299 genomes</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa9bf648500">
+   <rect x="66.528" y="37.584" width="226.8" height="123.733333"/>
+  </clipPath>
+  <clipPath id="p854332dfe2">
+   <rect x="66.528" y="247.930667" width="226.8" height="123.733333"/>
+  </clipPath>
+ </defs>
+</svg>

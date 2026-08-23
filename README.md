@@ -8,6 +8,7 @@ evidence-focused portfolio for Zihao (Jason) Zhang.
 - `/` - selected work, background, and contact links
 - `/work/quickbin/` - QuickBin/JGI experience case study
 - `/work/tonal-inference/` - recurrent tonal-inference research case study
+- `/work/connect-four/` - held-out Connect Four benchmark audit
 
 ## Local development
 
@@ -24,11 +25,18 @@ npm run lint
 npx tsc --noEmit --incremental false
 ```
 
+`npm test` builds the site, then runs the prerender tests and a prose-style
+audit (`tests/prose-style.test.mjs`). The audit checks paragraphs, headings,
+captions, definition text, individual list items, alt text, and metadata. Its
+fixtures cover comma, semicolon, and middle-dot triads while allowing ordinary
+pairs and decimal values. Genuine multi-item content belongs in list or table
+markup.
+
 The default build uses `/` as its base path for the GitHub user site.
 
 ## Public-material boundary
 
-This repository contains only the portfolio source, its tests, six approved
+This repository contains only the portfolio source, its tests, approved
 visual assets, and a phone-free public resume. The QuickBin case study uses
 resume-level descriptions and newly drawn explanatory graphics; it does not
 include JGI code, data, or internal artifacts. The tonal figures are unchanged
@@ -38,7 +46,7 @@ coursework source.
 
 ## Deployment
 
-Pushes to `main` run `.github/workflows/deploy-pages.yml`, which builds,
-tests, lints, and type-checks the site, then deploys it to GitHub Pages using
-GitHub's built-in `GITHUB_TOKEN`. No hosting credentials are stored in this
-repository.
+Pushes to `main` run `.github/workflows/deploy-pages.yml`. The workflow runs
+the same checks as local development, then deploys the built site to GitHub
+Pages using GitHub's built-in `GITHUB_TOKEN`. No hosting credentials are
+stored in this repository.

@@ -8,14 +8,14 @@ type Route = "industry" | "research";
 const routeCopy = {
   industry: {
     status:
-      "Industry view. The same projects, ordered to foreground systems work, measurable improvement, and validation.",
-    goal: "Goal: show what improved, where it held, and what evidence the system still needs.",
+      "Industry view. Same projects, reordered so the systems work comes first.",
+    goal: "The cards lead with the result and show how it was tested.",
   },
   research: {
     status:
-      "Research view. The same projects, ordered to foreground models, evidence, and revised explanations.",
-    goal: "Goal: show what a model explained, where its predictions broke, and how the evidence changed the next experiment.",
-    line: "I use computational models and large-scale corpora to test how statistical structure becomes expectation, then let the evidence refine the explanation.",
+      "Research view. Same projects, reordered so the modeling questions lead.",
+    goal: "The cards lead with the research question and follow the result.",
+    line: "I use computational models to study how statistical structure becomes expectation. Large corpora provide the harder test.",
   },
 } satisfies Record<Route, { status: string; goal: string }> & {
   research: { line: string };
@@ -28,19 +28,12 @@ const projects = [
     eyebrow: "QuickBin · Featured experience",
     title: "Building trustworthy evidence for neural metagenome binning",
     story:
-      "I retrained QuickBin's terminal network for PacBio HiFi and built a leakage-safe workflow to test it. Contamination fell on held-out synthetic data and one CAMI II community. In a fair internal comparison, QuickBin with the selected candidate also led MetaBAT2 by Total Score; CAMI II exposed a recovery tradeoff, so that composite ranking did not carry over.",
+      "I retrained QuickBin's terminal network for PacBio HiFi and built a genome-held-out workflow. Contamination fell on synthetic genomes and one CAMI II community. Lower recovery changed the external ranking.",
     why: {
-      industry:
-        "Industry lens: a working external pipeline, measurable gains, and clear next tests.",
-      research:
-        "Research lens: contamination reduction held; composite ranking did not.",
+      industry: "The external pipeline ran end to end. Its gains were measured.",
+      research: "Contamination reduction held. The composite ranking did not.",
     },
     proof: [
-      {
-        label: "held",
-        value: "contamination fell in internal and CAMI II evaluations",
-        tone: "matched",
-      },
       {
         label: "internal",
         value: "2,013 genomes · AM1 contamination 1.7530 → 1.3724",
@@ -60,12 +53,15 @@ const projects = [
     boundary:
       "Internal results use synthetic genomes; external evaluation uses public CAMI II. QuickBin is part of open-source BBTools.",
     detail:
-      "Five gates; Jason retrained the terminal network for the harder pairs.",
+      "Both retrained networks lowered contamination on genomes excluded before training.",
     visual: {
-      src: "/quickbin/merge-decision.svg",
+      src: "/quickbin/heldout-dotplot.svg",
+      mobileSrc: "/quickbin/heldout-dotplot-mobile.svg",
       width: 960,
-      height: 430,
-      alt: "A blue and amber candidate contig pair passes through composition and coverage filters to Jason's retrained 28-feature neural network. Rejecting a pair from different genomes keeps two clean bins, while a wrong merge produces one contaminated bin.",
+      height: 420,
+      mobileWidth: 420,
+      mobileHeight: 360,
+      alt: "Dot plot of contamination on held-out genomes. On the 299-genome test split, both retrained networks score below the shipping network's 1.7530, with AM1 lowest at 1.3724. The 279-genome validation split shows the same direction.",
     },
     href: "/work/quickbin/",
   },
@@ -77,8 +73,8 @@ const projects = [
     story:
       "I derived terrain-aware heuristics to preserve optimality, then measured what weighting them costs. Optimal A* matched Dijkstra's path cost with 81.25% fewer expanded nodes; weighted A* cut expansions by 98.57% while raising mean path cost 1.83%.",
     why: {
-      industry: "Industry lens: a bounded performance tradeoff.",
-      research: "Research lens: admissible assumptions made testable.",
+      industry: "The faster search came with a measured cost.",
+      research: "The benchmark made the admissibility assumptions testable.",
     },
     proof: [
       {
@@ -87,14 +83,13 @@ const projects = [
         tone: "matched",
       },
       {
-        label: "expansions",
-        value: "81.25% fewer expanded nodes",
+        label: "weighted",
+        value: "98.57% fewer expansions · +1.83% mean path cost",
         tone: "plain",
       },
-      { label: "weighted", value: "+1.83% mean path cost", tone: "plain" },
     ],
     detail:
-      "Results come from the independent deterministic synthetic benchmark, not the historical course notebook.",
+      "A deterministic synthetic benchmark, separate from the course notebook.",
     visual: {
       src: "/astar/path-comparison.svg",
       width: 720,
@@ -106,12 +101,12 @@ const projects = [
     id: "tonal",
     className: "featured",
     eyebrow: "Tonal inference · Research",
-    title: "When better memory cannot fix a lossy representation",
+    title: "Better memory could not fix a lossy representation",
     story:
-      "Could learned recurrence track tonal center through changing chord sequences? It helped on clean synthetic data, but real MIDI exposed a representation bottleneck recurrence could not fix.",
+      "Learned recurrence tracked tonal center better on clean synthetic sequences. Real MIDI exposed a representation bottleneck that more memory could not repair.",
     why: {
-      industry: "Industry lens: diagnosis found an upstream bottleneck.",
-      research: "Research lens: a failed transfer redirected the hypothesis.",
+      industry: "The diagnosis located the bottleneck upstream of the model.",
+      research: "The failed transfer redirected the hypothesis.",
     },
     proof: [
       {
@@ -124,7 +119,6 @@ const projects = [
         value: "0.8101 SRN / 0.7529 EMA+MLP",
         tone: "plain",
       },
-      { label: "corpus", value: "six-piece difficulty-graded", tone: "plain" },
       {
         label: "sensitivity",
         value: "54 predeclared conditions",
@@ -134,12 +128,12 @@ const projects = [
     boundary:
       "Synthetic accuracy and descriptive MIDI behavior remain separate.",
     detail:
-      "Descriptive real-MIDI behavior, not an accuracy comparison: learned recurrence changed the path and confidence without resolving the dominant tonal bias.",
+      "The 54-condition grid exposes the recovery–stability frontier.",
     visual: {
-      src: "/tonal/circle-of-fifths-ema-vs-srn.png",
-      width: 1959,
-      height: 994,
-      alt: "Side-by-side Circle-of-Fifths walks for EMA and SRN on the Twinkle 12 MIDI excerpt, showing different key trajectories that both end near F.",
+      src: "/tonal/gate-sensitivity-pareto.png",
+      width: 1166,
+      height: 952,
+      alt: "Scatter plot of 54 predeclared settings. The marked Pareto frontier shows that stronger minor-mode recovery generally came with more stability damage.",
     },
     href: "/work/tonal-inference/",
   },
@@ -151,8 +145,8 @@ const projects = [
     story:
       "I tested whether a century of popular-song harmony showed a Wundt-like inverted-U in harmonic surprisal. The apparent curve did not survive weighting for unequal decade samples.",
     why: {
-      industry: "Industry lens: robustness checks changed the usable result.",
-      research: "Research lens: sensitivity analysis weakened the hypothesis.",
+      industry: "A robustness check changed the result worth reporting.",
+      research: "Sensitivity analysis weakened the original hypothesis.",
     },
     proof: [
       {
@@ -165,16 +159,19 @@ const projects = [
         value: "667,858 rows → 277,925 songs",
         tone: "plain",
       },
-      { label: "temporal", value: "N = 12 decades", tone: "plain" },
-      { label: "weighted", value: "no in-range inverted-U", tone: "plain" },
+      {
+        label: "temporal",
+        value: "N = 12 decades · no weighted in-range inverted-U",
+        tone: "plain",
+      },
     ],
     detail:
-      "The unweighted result is reproducible but not robust. Genre differences are statistically detectable with substantial overlap.",
+      "Weighting removes the apparent curve.",
     visual: {
-      src: "/harmonic/surprisal-over-time.png",
-      width: 1440,
-      height: 972,
-      alt: "Mean harmonic surprisal by decade with a quadratic fit; the pattern does not hold once decades are weighted by sample size.",
+      src: "/harmonic/temporal-sensitivity.png",
+      width: 1512,
+      height: 1080,
+      alt: "Decadal harmonic surprisal means with quadratic fits under three weighting schemes. The unweighted line bends downward within the observed range, while weighting by song count or inverse variance removes that shape.",
     },
   },
   {
@@ -184,10 +181,10 @@ const projects = [
     eyebrow: "Connect Four · Software",
     title: "When the benchmark, not the agent, was the bug",
     story:
-      "I built a Minimax + Alpha-Beta agent, then made its benchmark reproducible. Two early win rates were artifacts unrelated to the search; the verified result uses fixed depth 6 against an unmodified 1001-rollout Monte Carlo baseline.",
+      "I recovered an old Minimax agent and rebuilt its benchmark. Two early win rates were artifacts. The final test fixed depth at 6 against the unchanged Monte Carlo baseline.",
     why: {
-      industry: "Industry lens: a measurement bug caught before publication.",
-      research: "Research lens: two artifacts separated from the real effect.",
+      industry: "The measurement bug was caught before publication.",
+      research: "The rerun separated the artifacts from the final result.",
     },
     proof: [
       {
@@ -207,14 +204,15 @@ const projects = [
       },
     ],
     detail:
-      "Fixed search depth 6 against an unmodified 1001-rollout Monte Carlo baseline; Wilson 95% interval [86.3%, 96.6%].",
+      "Frozen depth-6 holdout with its Wilson interval; all 140 outcomes reproduced.",
     boundary: "The recovered source is not in a public repository yet.",
     visual: {
-      src: "/connect-four/benchmark-sequence.svg",
+      src: "/connect-four/final-evidence.svg",
       width: 720,
-      height: 360,
-      alt: "Benchmark sequence showing 32 percent and 80 percent discarded as measurement artifacts, followed by 39 of 40 development games and the verified held-out result of 93 of 100.",
+      height: 340,
+      alt: "A point at 93 percent marks the held-out result of 93 wins in 100 games, with the Wilson 95 percent interval drawn from 86.3 to 96.6 percent. A note records that a second machine reproduced all 140 games at fixed depth 6 against the unchanged 1001-rollout Monte Carlo baseline.",
     },
+    href: "/work/connect-four/",
   },
 ] as const;
 
@@ -240,6 +238,43 @@ function ProofBlock({
         </span>
       ))}
     </div>
+  );
+}
+
+function ProjectFigure({
+  visual,
+  className,
+  caption,
+}: {
+  visual: {
+    src: string;
+    width: number;
+    height: number;
+    alt: string;
+    mobileSrc?: string;
+    mobileWidth?: number;
+    mobileHeight?: number;
+  };
+  className?: string;
+  caption?: string;
+}) {
+  return (
+    <figure className={className ?? "card-detail-figure"}>
+      <picture>
+        {visual.mobileSrc ? (
+          <source media="(max-width: 540px)" srcSet={sitePath(visual.mobileSrc)} />
+        ) : null}
+        <img
+          src={sitePath(visual.src)}
+          width={visual.width}
+          height={visual.height}
+          loading="lazy"
+          decoding="async"
+          alt={visual.alt}
+        />
+      </picture>
+      {caption ? <figcaption>{caption}</figcaption> : null}
+    </figure>
   );
 }
 
@@ -362,15 +397,16 @@ export default function AudienceProjectGrid() {
           </div>
           <div className="work-intro">
             <p>
-              The problems range from genome binning and pathfinding to music
-              cognition and game-tree search; the build and the question matter
-              as much as the result.
-              <br />
-              <span className="work-index">
-                Genomics · Pathfinding · Music cognition · Corpus statistics ·
-                Game-tree search
-              </span>
+              Five projects, one habit: the first result is where the checking
+              starts, not where it stops.
             </p>
+            <ul className="work-index" aria-label="Project areas">
+              <li>Genomics</li>
+              <li>Pathfinding</li>
+              <li>Music cognition</li>
+              <li>Corpus statistics</li>
+              <li>Game-tree search</li>
+            </ul>
             <div className="route-control" aria-labelledby="route-label">
               <p id="route-label">
                 <strong>Choose a reading route</strong>
@@ -418,18 +454,17 @@ export default function AudienceProjectGrid() {
                     <p className="card-why">{project.why[route]}</p>
                     <ProofBlock rows={project.proof} />
                     <p className="boundary">{project.boundary}</p>
+                    {"href" in project && (
+                      <a className="card-link" href={sitePath(project.href)}>
+                        Read case study →
+                      </a>
+                    )}
                   </div>
-                  <figure className="card-detail-figure wide-card-visual">
-                    <img
-                      src={sitePath(project.visual.src)}
-                      width={project.visual.width}
-                      height={project.visual.height}
-                      loading="lazy"
-                      decoding="async"
-                      alt={project.visual.alt}
-                    />
-                    <figcaption>{project.detail}</figcaption>
-                  </figure>
+                  <ProjectFigure
+                    visual={project.visual}
+                    className="card-detail-figure wide-card-visual"
+                    caption={project.detail}
+                  />
                 </article>
               );
             }
@@ -445,19 +480,10 @@ export default function AudienceProjectGrid() {
                 <p>{project.story}</p>
                 <p className="card-why">{project.why[route]}</p>
                 {"visual" in project && (
-                  <figure className="card-detail-figure">
-                    <img
-                      src={sitePath(project.visual.src)}
-                      width={project.visual.width}
-                      height={project.visual.height}
-                      loading="lazy"
-                      decoding="async"
-                      alt={project.visual.alt}
-                    />
-                    {"detail" in project && (
-                      <figcaption>{project.detail}</figcaption>
-                    )}
-                  </figure>
+                  <ProjectFigure
+                    visual={project.visual}
+                    caption={"detail" in project ? project.detail : undefined}
+                  />
                 )}
                 <ProofBlock rows={project.proof} />
                 {"boundary" in project && (

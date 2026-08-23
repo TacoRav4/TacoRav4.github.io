@@ -18,7 +18,7 @@ export default function Home() {
           <article>
             <p className="eyebrow">Corpus scale</p>
             <h3>Harmonic surprisal</h3>
-            <p>Chord transitions, historical aggregation, and robustness.</p>
+            <p>How chord statistics drift across a century of songs.</p>
           </article>
           <span className="thread-link" aria-hidden="true">
             trace →
@@ -26,7 +26,7 @@ export default function Home() {
           <article>
             <p className="eyebrow">Moment-to-moment</p>
             <h3>Tonal inference</h3>
-            <p>Temporal belief, representation, and interpretable cues.</p>
+            <p>How belief about the key should evolve as music unfolds.</p>
           </article>
         </div>
       </section>
@@ -39,8 +39,8 @@ export default function Home() {
         <div className="section-heading">
           <h2 id="approach-title">How I work</h2>
           <p>
-            The shared method matters more than a tool list. Each step leaves
-            an inspectable contract or piece of evidence.
+            The method matters more than the tool list. Each step leaves
+            something another person can check.
           </p>
         </div>
         <div className="method-grid">
@@ -57,7 +57,7 @@ export default function Home() {
           <article>
             <p className="section-number">03</p>
             <h3>Stress</h3>
-            <p>Test transfer, sensitivity, and failure modes.</p>
+            <p>Push the result somewhere harder and watch what breaks.</p>
           </article>
           <article>
             <p className="section-number">04</p>
@@ -75,32 +75,45 @@ export default function Home() {
         <div className="skill-grid">
           <article>
             <h3>Scientific ML</h3>
-            <p>
-              PyTorch, recurrent models, held-out evaluation, and benchmark
-              design.
-            </p>
+            <ul className="skill-list">
+              <li>PyTorch and recurrent models</li>
+              <li>Held-out evaluation</li>
+              <li>Benchmark design</li>
+            </ul>
           </article>
           <article>
             <h3>Data and statistics</h3>
-            <p>Python, R, Pandas, Markov models, regression, and ANOVA.</p>
+            <ul className="skill-list">
+              <li>Python and Pandas</li>
+              <li>R</li>
+              <li>Regression and ANOVA</li>
+              <li>Markov models</li>
+            </ul>
           </article>
           <article>
             <h3>Scientific systems</h3>
-            <p>Java, Bash, Linux, Git, Slurm/HPC, and integration testing.</p>
+            <ul className="skill-list">
+              <li>Java</li>
+              <li>Bash and Linux</li>
+              <li>Git and Slurm/HPC</li>
+              <li>Integration testing</li>
+            </ul>
           </article>
           <article>
             <h3>Bioinformatics</h3>
-            <p>
-              BBTools/QuickBin, minimap2, FASTA/SAM/TSV validation, and
-              synthetic-genome benchmarks.
-            </p>
+            <ul className="skill-list">
+              <li>BBTools/QuickBin and minimap2</li>
+              <li>FASTA/SAM/TSV validation</li>
+              <li>Synthetic-genome benchmarks</li>
+            </ul>
           </article>
           <article>
             <h3>Research infrastructure</h3>
-            <p>
-              HTML/JavaScript, Django ORM, behavioral-study workflows, and
-              data-integrity constraints.
-            </p>
+            <ul className="skill-list">
+              <li>HTML/JavaScript</li>
+              <li>Django ORM</li>
+              <li>Behavioral-study workflows</li>
+            </ul>
           </article>
         </div>
       </section>
@@ -109,19 +122,19 @@ export default function Home() {
         <div className="section-heading">
           <h2 id="about-title">About</h2>
           <p>
-            Zihao (Jason) Zhang is an M.S. candidate in Cognitive and
-            Information Sciences at UC Merced. He builds machine-learning and
-            scientific software, then tests what improved, where it holds, and
-            what evidence should come next. At the Joint Genome Institute, he
-            designed leakage-safe PacBio training and evaluation workflows for
-            neural metagenome binning. Both retrained models reduced
-            contamination on held-out synthetic data and one external CAMI II
-            community; a recovery tradeoff in that external test set the next
-            validation questions. In computational music research, he studies
-            how statistical structure becomes expectation, using model
-            comparisons, representation analysis, and sensitivity checks to
-            refine the explanation. His work combines reproducible pipelines,
-            source-level debugging, and claims calibrated to the evidence.
+            I&apos;m an M.S. candidate in Cognitive and Information Sciences at
+            UC Merced. Most of my work starts the same way: a model looks
+            better than the thing it replaced, and I want to know whether that
+            survives a harder test. At the Joint Genome Institute I retrained
+            QuickBin&apos;s terminal network for PacBio data and built the
+            leakage-safe evaluation around it. Contamination fell on genomes
+            the training had never seen; an external benchmark then exposed a
+            recovery tradeoff, which became the next round of questions. My
+            music-cognition research asks how statistical structure turns into
+            expectation. The pattern repeated there — a clean synthetic win,
+            then a real corpus that sent me back to the representation
+            underneath. I would rather narrow a claim than defend one the data
+            has outgrown.
           </p>
         </div>
       </section>

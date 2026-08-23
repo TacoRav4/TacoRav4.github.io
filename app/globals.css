@@ -317,9 +317,18 @@ summary:focus-visible {
 }
 
 .work-index {
-  display: inline-block;
-  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
   font-size: 0.82rem;
+}
+
+.work-index li:not(:first-child)::before {
+  content: "·";
+  margin: 0 0.5rem;
+  color: var(--graphite);
 }
 
 .project-grid {
@@ -331,10 +340,11 @@ summary:focus-visible {
 .project-card {
   position: relative;
   grid-column: span 6;
+  align-self: start;
   display: flex;
   flex-direction: column;
   min-height: 31rem;
-  padding: 2rem;
+  padding: 1.75rem;
   border: 1px solid var(--ink);
   /* Opaque equivalent of surface-88%-over-paper. Must stay opaque: cards pass
      over one another during the route-reorder transition. */
@@ -380,7 +390,7 @@ summary:focus-visible {
 
 .project-card h3 {
   max-width: 16ch;
-  margin: 0.5rem 0 1.5rem;
+  margin: 0.5rem 0 1.1rem;
   font-size: clamp(1.8rem, 3vw, 3rem);
   letter-spacing: -0.045em;
   line-height: 1;
@@ -401,8 +411,8 @@ summary:focus-visible {
 }
 
 .proof {
-  margin-top: auto;
-  padding: 1rem 0;
+  margin-top: 1rem;
+  padding: 0.8rem 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   color: var(--ink);
@@ -465,13 +475,12 @@ summary {
   background: white;
 }
 
-/* `.proof` is bottom-aligned with `margin-top: auto` so proof rows line up
-   across a grid row. When a card is stretched taller than its content — a
-   featured card beside a taller compact one — all that slack pooled into one
-   gap above the proof block. Auto margins here let the free space distribute
-   instead of collecting in a single place. */
 .project-card.featured .card-detail-figure {
-  margin-block: auto;
+  margin-block: 1rem 1.25rem;
+}
+
+.card-detail-figure picture {
+  display: block;
 }
 
 .card-detail-figure img {
@@ -481,7 +490,7 @@ summary {
 }
 
 .card-detail-figure figcaption {
-  padding: 1rem;
+  padding: 0.75rem 0.9rem;
   border-top: 1px solid var(--line);
   color: var(--graphite);
   font-size: 0.82rem;
@@ -530,8 +539,21 @@ summary {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.skill-list {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--graphite);
+}
+
+.skill-list li {
+  padding: 0.3rem 0;
+  border-top: 1px solid var(--line);
+  line-height: 1.5;
+}
+
 .case-hero {
-  padding: 6rem 0 4rem;
+  padding: 3.5rem 0 3rem;
   border-bottom: 1px solid var(--ink);
 }
 
@@ -544,11 +566,11 @@ summary {
 }
 
 .case-hero h1 {
-  max-width: 14ch;
+  max-width: 18ch;
   margin: 0 0 2rem;
-  font-size: clamp(3rem, 7vw, 6rem);
-  letter-spacing: -0.06em;
-  line-height: 0.95;
+  font-size: clamp(2.1rem, 5vw, 4.25rem);
+  letter-spacing: -0.045em;
+  line-height: 1.02;
 }
 
 .case-summary {
@@ -564,6 +586,17 @@ summary {
   line-height: 1.75;
 }
 
+.case-proof {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 2rem;
+  margin-top: 2rem;
+}
+
+.case-proof > span {
+  display: block;
+}
+
 .meta-list {
   margin: 0;
   padding: 0;
@@ -572,64 +605,130 @@ summary {
   line-height: 1.8;
 }
 
-.evidence-spine {
-  display: grid;
-  grid-template-columns: 14rem 1fr;
-  gap: 2rem;
-  padding: 3rem 0;
-}
-
-.spine-labels {
-  position: sticky;
-  top: 1rem;
-  align-self: start;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 0.75rem;
-  line-height: 2;
-}
-
-.spine-labels li::before {
-  content: "○ ";
-  color: var(--teal);
-}
-
-.evidence-sections section {
-  padding: 2rem 0 4rem 3rem;
-  border-left: 1px solid var(--ink);
+.chapter-row {
   border-bottom: 1px solid var(--line);
 }
 
-.evidence-sections section::before {
-  content: "";
-  display: block;
-  width: 0.8rem;
-  height: 0.8rem;
-  margin: 0 0 2rem -3.45rem;
-  border: 2px solid var(--ink);
-  border-radius: 50%;
-  background: var(--paper);
+.chapter-row ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2.25rem;
+  margin: 0;
+  padding: 1.1rem 0;
+  list-style: none;
+  counter-reset: chapter;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.78rem;
 }
 
-.evidence-sections section.reversal::before {
-  border-color: var(--rust);
-  background: var(--rust);
+.chapter-row li {
+  counter-increment: chapter;
 }
 
-.evidence-sections h2 {
-  max-width: 18ch;
-  margin: 0 0 1.5rem;
-  font-size: clamp(2rem, 4vw, 3.75rem);
-  letter-spacing: -0.045em;
-  line-height: 1;
+.chapter-row li::before {
+  content: counter(chapter, decimal-leading-zero) " ";
+  color: var(--teal);
+  font-weight: 700;
 }
 
-.evidence-sections p,
-.evidence-sections li {
-  max-width: 65ch;
+.chapter-row a {
+  color: var(--graphite);
+  text-decoration: none;
+}
+
+.chapter-row a:hover,
+.chapter-row a:focus-visible {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.case-body {
+  max-width: 60rem;
+  margin-inline: auto;
+  padding-bottom: 2rem;
+}
+
+.chapter {
+  padding: 3rem 0 3.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.chapter:last-child {
+  border-bottom: none;
+}
+
+.chapter.reversal .eyebrow {
+  color: var(--rust);
+}
+
+.chapter h2 {
+  max-width: 26ch;
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.chapter h3 {
+  margin: 2.25rem 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.chapter p,
+.chapter li,
+.chapter dd {
   line-height: 1.75;
+}
+
+.chapter > p,
+.chapter > h3,
+.chapter .comparison,
+.chapter .gate-table,
+.chapter .provenance,
+.chapter .boundary-block {
+  max-width: 46rem;
+}
+
+.provenance {
+  margin: 1.5rem 0 2rem;
+  border-top: 1px solid var(--ink);
+}
+
+.provenance > div {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.provenance dt {
+  padding-top: 0.2rem;
+  color: var(--teal);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.provenance dd {
+  margin: 0;
+  color: var(--graphite);
+}
+
+.boundary-block p {
+  margin: 0.25rem 0;
+}
+
+.boundary-list {
+  margin: 0.25rem 0;
+  padding-left: 1.2rem;
+}
+
+.boundary-list li {
+  line-height: 1.6;
 }
 
 .visual-placeholder {
@@ -648,6 +747,7 @@ summary {
 }
 
 .quickbin-diagram {
+  max-width: 52rem;
   margin: 2rem 0;
 }
 
@@ -739,13 +839,16 @@ summary {
 }
 
 .case-figure {
+  max-width: 46rem;
   margin: 2rem 0;
   border: 1px solid var(--line);
   background: white;
 }
 
-.case-figure-narrow {
-  max-width: 48rem;
+/* Data figures step out of the reading column into the full case-body width,
+   so charts get room while paragraphs keep a comfortable measure. */
+.case-figure-breakout {
+  max-width: none;
 }
 
 .case-figure img {
@@ -785,6 +888,24 @@ summary {
 .gate-table thead th {
   background: var(--surface);
   color: var(--ink);
+}
+
+.score-table {
+  max-width: 30rem;
+}
+
+.score-table td {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 .gate-table tbody th {
@@ -867,8 +988,11 @@ summary {
 
   .hero,
   .section-heading,
-  .case-summary,
-  .evidence-spine {
+  .case-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .case-proof {
     grid-template-columns: 1fr;
   }
 
@@ -895,7 +1019,32 @@ summary {
 
   .project-card.wide {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.25rem;
+  }
+
+  .case-hero {
+    padding: 2.25rem 0 2rem;
+  }
+
+  .back-link {
+    margin-bottom: 1rem;
+  }
+
+  .case-hero h1 {
+    margin-bottom: 1.25rem;
+  }
+
+  .case-summary {
+    gap: 0.85rem;
+  }
+
+  .case-summary > p {
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+
+  .case-proof {
+    margin-top: 1.25rem;
   }
 
   .thread,
@@ -910,20 +1059,13 @@ summary {
     justify-self: center;
   }
 
-  .spine-labels {
-    position: static;
+  .chapter {
+    padding: 2.25rem 0 2.5rem;
   }
 
-  .evidence-sections {
-    min-width: 0;
-  }
-
-  .evidence-sections section {
-    padding-left: 1.5rem;
-  }
-
-  .evidence-sections section::before {
-    margin-left: -1.95rem;
+  .provenance > div {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
   }
 
   .comparison {
@@ -947,18 +1089,143 @@ summary {
     max-width: none;
   }
 
+  .connect-four-figure {
+    max-width: 100%;
+    overflow-x: visible;
+  }
+
+  .connect-four-figure img {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .site-footer {
     flex-direction: column;
   }
 }
 
+@media (max-width: 540px) {
+  /* Two stacked rows: the wordmark wraps to two lines beside the nav at this
+     width, and the two ended up nearly touching. */
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 0.9rem 0 1rem;
+  }
+
+  .site-header nav {
+    justify-content: flex-start;
+  }
+
+  .case-hero {
+    padding: 1rem 0;
+  }
+
+  .back-link {
+    margin-bottom: 0.5rem;
+  }
+
+  .case-hero h1 {
+    margin-bottom: 0.85rem;
+    font-size: 1.75rem;
+  }
+
+  .case-summary {
+    gap: 0.55rem;
+  }
+
+  .case-summary > p {
+    font-size: 0.96rem;
+    line-height: 1.5;
+  }
+
+  .meta-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 1rem;
+    line-height: 1.4;
+  }
+
+  .case-proof {
+    margin-top: 0.75rem;
+    padding: 0.55rem 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .chapter-row ol {
+    gap: 0.25rem 1rem;
+    padding: 0.7rem 0;
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+}
+
 @media (max-width: 420px) {
+  .section {
+    padding: 1rem 0 1.75rem;
+  }
+
+  #work {
+    padding-top: 1.75rem;
+  }
+
+  .section-heading {
+    margin-bottom: 1.25rem;
+  }
+
+  .project-grid {
+    gap: 0.25rem;
+  }
+
   .project-card {
-    padding: 1.25rem;
+    padding: 0.75rem;
+  }
+
+  .project-card h3,
+  .project-card.wide h3 {
+    margin: 0.25rem 0 0.55rem;
+    font-size: 1.7rem;
+    line-height: 1.04;
+  }
+
+  .project-card p {
+    line-height: 1.5;
+  }
+
+  .card-why {
+    margin-bottom: 0.6rem;
+  }
+
+  .card-detail-figure,
+  .project-card.featured .card-detail-figure {
+    margin-block: 0.5rem 0.7rem;
+  }
+
+  .card-detail-figure figcaption {
+    padding: 0.55rem 0.7rem;
+    line-height: 1.45;
+  }
+
+  .proof {
+    margin-top: 0.65rem;
+    padding: 0.55rem 0;
+    line-height: 1.5;
   }
 
   .proof > span {
     grid-template-columns: 6rem 1fr;
+  }
+
+  .method-grid article,
+  .skill-grid article {
+    padding: 1rem;
+  }
+
+  .method-grid,
+  .skill-grid {
+    gap: 0.75rem;
   }
 
   .quickbin-diagram {

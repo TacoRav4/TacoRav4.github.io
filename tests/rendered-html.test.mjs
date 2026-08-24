@@ -33,7 +33,7 @@ test("prerenders the portfolio homepage without starter content", async () => {
   assert.match(html, /Better memory could not fix a lossy representation/);
   assert.match(
     html,
-    new RegExp(`src="${escapedBasePath}headshot\\.png"`),
+    new RegExp(`src="${escapedBasePath}headshot\\.jpg"`),
   );
   assert.doesNotMatch(html, /Portrait placeholder|Pending Jason's photo/);
   assert.doesNotMatch(
@@ -168,7 +168,7 @@ test("emits static assets and route-specific metadata", async () => {
   assert.match(connectFourHtml, /<title>Connect Four Benchmark Audit/);
 
   for (const asset of [
-    "headshot.png",
+    "headshot.jpg",
     "astar/path-comparison.svg",
     "connect-four/final-evidence.svg",
     "connect-four/heldout-evidence.svg",

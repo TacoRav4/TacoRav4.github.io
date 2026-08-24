@@ -29,7 +29,11 @@ test("prerenders the portfolio homepage without starter content", async () => {
   assert.match(html, /After the first result/);
   assert.match(html, /Selected Work/);
   assert.match(html, /Five projects, one habit/);
-  assert.match(html, /Building trustworthy evidence/);
+  assert.match(html, /Adapting QuickBin for PacBio metagenome binning/);
+  assert.match(html, /Terrain-aware pathfinding with A\* heuristics/);
+  assert.match(html, /Modeling how tonal center inference updates over time/);
+  assert.match(html, /Harmonic surprisal across a century of popular music/);
+  assert.match(html, /Benchmarking an old Connect Four agent/);
   assert.match(html, /Better memory could not fix a lossy representation/);
   assert.match(
     html,
@@ -40,7 +44,16 @@ test("prerenders the portfolio homepage without starter content", async () => {
     html,
     /codex-preview|SkeletonPreview|react-loading-skeleton|vinext|wrangler/i,
   );
-  assert.match(html, /show how it was tested/);
+  assert.match(html, /introduce the system or question/);
+  assert.match(
+    html,
+    /Retraining lowered contamination internally, but the external ranking did not hold\./,
+  );
+  assert.match(html, /Fewer expansions came with a measured path-cost tradeoff\./);
+  assert.match(
+    html,
+    /The apparent inverted-U did not survive weighting for unequal decade samples\./,
+  );
   assert.match(html, /narrow a claim than defend one/);
 });
 
@@ -51,6 +64,10 @@ test("prerenders both deep case studies", async () => {
   ]);
 
   assert.match(quickbinHtml, /Five gates decide every merge/);
+  assert.match(
+    quickbinHtml,
+    /<h1>Building trustworthy evidence for neural metagenome binning<\/h1>/,
+  );
   assert.match(quickbinHtml, /Contamination held; the composite ranking changed/);
   assert.match(quickbinHtml, /shared-U2500 universe/);
   assert.match(quickbinHtml, /Candidate \/ AM1/);
@@ -70,6 +87,10 @@ test("prerenders both deep case studies", async () => {
     ),
   );
   assert.match(tonalHtml, /synthetic labeled accuracy, not real-MIDI accuracy/);
+  assert.match(
+    tonalHtml,
+    /<h1>Better memory could not fix a lossy representation<\/h1>/,
+  );
   assert.match(tonalHtml, /sensitivity grid of 54 conditions/);
   assert.match(
     tonalHtml,
@@ -87,7 +108,8 @@ test("prerenders both deep case studies", async () => {
 
 test("prerenders the Connect Four evidence card", async () => {
   const html = await readRoute(routes.home);
-  assert.match(html, /When the benchmark, not the agent, was the bug/);
+  assert.match(html, /Benchmarking an old Connect Four agent/);
+  assert.match(html, /The benchmark, not the agent, was the bug/);
   assert.match(html, /93\/100 on held-out seeds 40-139/);
   assert.match(html, /fixed (?:search )?depth(?: at)? 6/i);
   assert.match(html, /(?:unmodified|unchanged) 1001-rollout Monte Carlo baseline/i);

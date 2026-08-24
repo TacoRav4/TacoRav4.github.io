@@ -9,12 +9,14 @@ const routeCopy = {
   industry: {
     status:
       "Industry view. Same projects, reordered so the systems work comes first.",
-    goal: "The cards lead with the result and show how it was tested.",
+    goal:
+      "The cards introduce the system or question, then show how the result was tested.",
   },
   research: {
     status:
       "Research view. Same projects, reordered so the modeling questions lead.",
-    goal: "The cards lead with the research question and follow the result.",
+    goal:
+      "The cards introduce the question or phenomenon, then show how the result held up.",
     line: "I use computational models to study how statistical structure becomes expectation. Large corpora provide the harder test.",
   },
 } satisfies Record<Route, { status: string; goal: string }> & {
@@ -26,13 +28,10 @@ const projects = [
     id: "quickbin",
     className: "featured",
     eyebrow: "QuickBin · Featured experience",
-    title: "Building trustworthy evidence for neural metagenome binning",
+    title: "Adapting QuickBin for PacBio metagenome binning",
     story:
       "I retrained QuickBin's terminal network for PacBio HiFi and built a genome-held-out workflow. Contamination fell on synthetic genomes and one CAMI II community. Lower recovery changed the external ranking.",
-    why: {
-      industry: "The external pipeline ran end to end. Its gains were measured.",
-      research: "Contamination reduction held. The composite ranking did not.",
-    },
+    why: "Retraining lowered contamination internally, but the external ranking did not hold.",
     proof: [
       {
         label: "internal",
@@ -69,13 +68,10 @@ const projects = [
     id: "astar",
     className: "compact",
     eyebrow: "A* · Software",
-    title: "Deriving and testing terrain-aware heuristics",
+    title: "Terrain-aware pathfinding with A* heuristics",
     story:
       "I derived terrain-aware heuristics to preserve optimality, then measured what weighting them costs. Optimal A* matched Dijkstra's path cost with 81.25% fewer expanded nodes; weighted A* cut expansions by 98.57% while raising mean path cost 1.83%.",
-    why: {
-      industry: "The faster search came with a measured cost.",
-      research: "The benchmark made the admissibility assumptions testable.",
-    },
+    why: "Fewer expansions came with a measured path-cost tradeoff.",
     proof: [
       {
         label: "matched",
@@ -101,13 +97,10 @@ const projects = [
     id: "tonal",
     className: "featured",
     eyebrow: "Tonal inference · Research",
-    title: "Better memory could not fix a lossy representation",
+    title: "Modeling how tonal center inference updates over time",
     story:
       "Learned recurrence tracked tonal center better on clean synthetic sequences. Real MIDI exposed a representation bottleneck that more memory could not repair.",
-    why: {
-      industry: "The diagnosis located the bottleneck upstream of the model.",
-      research: "The failed transfer redirected the hypothesis.",
-    },
+    why: "Better memory could not fix a lossy representation.",
     proof: [
       {
         label: "reversal",
@@ -141,13 +134,10 @@ const projects = [
     id: "harmonic",
     className: "compact",
     eyebrow: "Harmonic surprisal · Data",
-    title: "Testing and weakening a Wundt-curve hypothesis",
+    title: "Harmonic surprisal across a century of popular music",
     story:
       "I tested whether a century of popular-song harmony showed a Wundt-like inverted-U in harmonic surprisal. The apparent curve did not survive weighting for unequal decade samples.",
-    why: {
-      industry: "A robustness check changed the result worth reporting.",
-      research: "Sensitivity analysis weakened the original hypothesis.",
-    },
+    why: "The apparent inverted-U did not survive weighting for unequal decade samples.",
     proof: [
       {
         label: "reversal",
@@ -179,13 +169,10 @@ const projects = [
     className: "wide",
     layout: "split",
     eyebrow: "Connect Four · Software",
-    title: "When the benchmark, not the agent, was the bug",
+    title: "Benchmarking an old Connect Four agent",
     story:
       "I recovered an old Minimax agent and rebuilt its benchmark. Two early win rates were artifacts. The final test fixed depth at 6 against the unchanged Monte Carlo baseline.",
-    why: {
-      industry: "The measurement bug was caught before publication.",
-      research: "The rerun separated the artifacts from the final result.",
-    },
+    why: "The benchmark, not the agent, was the bug.",
     proof: [
       {
         label: "reproduced",
@@ -451,7 +438,7 @@ export default function AudienceProjectGrid() {
                     <p className="eyebrow">{project.eyebrow}</p>
                     <h3>{project.title}</h3>
                     <p>{project.story}</p>
-                    <p className="card-why">{project.why[route]}</p>
+                    <p className="card-why">{project.why}</p>
                     <ProofBlock rows={project.proof} />
                     <p className="boundary">{project.boundary}</p>
                     {"href" in project && (
@@ -478,7 +465,7 @@ export default function AudienceProjectGrid() {
                 <p className="eyebrow">{project.eyebrow}</p>
                 <h3>{project.title}</h3>
                 <p>{project.story}</p>
-                <p className="card-why">{project.why[route]}</p>
+                <p className="card-why">{project.why}</p>
                 {"visual" in project && (
                   <ProjectFigure
                     visual={project.visual}

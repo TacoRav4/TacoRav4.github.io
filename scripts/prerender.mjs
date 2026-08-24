@@ -25,6 +25,16 @@ const basePath =
     ? "/"
     : `/${rawBasePath.replace(/^\/+|\/+$/g, "")}/`;
 const assetUrl = (asset) => `${basePath}${asset.replace(/^\/+/, "")}`;
+const fontPreloads = [
+  "fonts/ibm-plex-sans/IBMPlexSans-Regular.woff2",
+  "fonts/ibm-plex-sans/IBMPlexSans-SemiBold.woff2",
+  "fonts/ibm-plex-sans/IBMPlexSans-Bold.woff2",
+]
+  .map(
+    (file) =>
+      `<link rel="preload" href="${assetUrl(file)}" as="font" type="font/woff2" crossorigin />`,
+  )
+  .join("\n    ");
 
 for (const route of staticRoutes) {
   const rendered = renderPage(route.pathname);
@@ -38,6 +48,7 @@ for (const route of staticRoutes) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="${rendered.description}" />
     <title>${rendered.title}</title>
+    ${fontPreloads}
     ${styles}
     <script type="module" src="${assetUrl(clientEntry.file)}"></script>
   </head>

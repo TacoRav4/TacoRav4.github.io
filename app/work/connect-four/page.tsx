@@ -76,7 +76,7 @@ export default function ConnectFourCaseStudy() {
             <h2>Fix the depth, then hold seeds back</h2>
             <p>
               The final test used a fixed search depth of 6 against the
-              unchanged 1001-rollout Monte Carlo baseline. Seeds 40–139 stayed
+              unchanged 1001-rollout Monte Carlo baseline. Seeds 40 to 139 stayed
               untouched until the agent was frozen, with alpha-beta playing
               first on even seeds and second on odd ones. No move timeout
               could change the depth or substitute a different move, so CPU

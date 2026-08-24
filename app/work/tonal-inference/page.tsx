@@ -62,7 +62,7 @@ export default function TonalInferenceCaseStudy() {
               The controlled comparison placed a static MLP behind hand-coded
               exponential smoothing, then compared it with an Elman recurrent
               network that learned its own temporal state. Same task, same
-              inputs — the only difference was where the memory came from.
+              inputs. The only difference was where the memory came from.
             </p>
           </section>
 

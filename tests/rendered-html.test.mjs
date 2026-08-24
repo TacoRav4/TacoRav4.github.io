@@ -26,8 +26,8 @@ test("prerenders the portfolio homepage without starter content", async () => {
   const html = await readRoute(routes.home);
   assert.match(html, /Zihao \(Jason\) Zhang/);
   assert.match(html, /Research Engineer/);
-  assert.match(html, /05 \/ Selected work/);
   assert.match(html, /After the first result/);
+  assert.match(html, /Selected Work/);
   assert.match(html, /Five projects, one habit/);
   assert.match(html, /Building trustworthy evidence/);
   assert.match(html, /Better memory could not fix a lossy representation/);

@@ -10,7 +10,7 @@ export default function QuickBinCaseStudy() {
           </a>
           <p className="eyebrow">
             Case study 01 · Experience · DOE Joint Genome Institute · Affiliate
-            Intern · May 22 – July 25, 2026
+            Intern · May 22 to July 25, 2026
           </p>
           <h1>Building trustworthy evidence for neural metagenome binning</h1>
           <div className="case-summary">
@@ -86,8 +86,8 @@ export default function QuickBinCaseStudy() {
             <p>
               QuickBin&apos;s public source uses five escalating gates, not a
               three-stage pipeline. Cheap checks reject pairs early; only the
-              pairs that survive reach the terminal neural network — the part
-              I retrained.
+              pairs that survive reach the terminal neural network, the part I
+              retrained.
             </p>
             <table className="gate-table">
               <thead>
@@ -144,9 +144,9 @@ export default function QuickBinCaseStudy() {
             <p>
               The evaluation contract came first. A genome-level split
               separated the 2,013 genomes before any training example was
-              made — 1,435 train / 279 validation / 299 evaluation — and the
-              resulting train-only input was checked for zero cross-split
-              leakage.
+              made. The split was 1,435 train / 279 validation / 299 evaluation,
+              and the resulting train-only input was checked for zero
+              cross-split leakage.
             </p>
             <figure className="quickbin-diagram">
               <svg

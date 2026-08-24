@@ -10,8 +10,8 @@ export default function Home() {
           <h2 id="thread-title">One research thread</h2>
           <p>
             The two music projects ask how statistical structure becomes
-            expectation—and how representation and evidence reshape the
-            explanation.
+            expectation. They also ask how representation and evidence reshape
+            the explanation.
           </p>
         </div>
         <div className="thread">
@@ -131,7 +131,7 @@ export default function Home() {
             the training had never seen; an external benchmark then exposed a
             recovery tradeoff, which became the next round of questions. My
             music-cognition research asks how statistical structure turns into
-            expectation. The pattern repeated there — a clean synthetic win,
+            expectation. The pattern repeated there: a clean synthetic win,
             then a real corpus that sent me back to the representation
             underneath. I would rather narrow a claim than defend one the data
             has outgrown.

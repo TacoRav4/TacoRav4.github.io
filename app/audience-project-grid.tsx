@@ -128,7 +128,7 @@ const projects = [
     boundary:
       "Synthetic accuracy and descriptive MIDI behavior remain separate.",
     detail:
-      "The 54-condition grid exposes the recovery–stability frontier.",
+      "The 54-condition grid exposes the recovery and stability frontier.",
     visual: {
       src: "/tonal/gate-sensitivity-pareto.png",
       width: 1166,
@@ -141,7 +141,7 @@ const projects = [
     id: "harmonic",
     className: "compact",
     eyebrow: "Harmonic surprisal · Data",
-    title: "Testing—and weakening—a Wundt-curve hypothesis",
+    title: "Testing and weakening a Wundt-curve hypothesis",
     story:
       "I tested whether a century of popular-song harmony showed a Wundt-like inverted-U in harmonic surprisal. The apparent curve did not survive weighting for unequal decade samples.",
     why: {
@@ -392,8 +392,8 @@ export default function AudienceProjectGrid() {
       <section className="section" id="work" aria-labelledby="work-title">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">05 / Selected work</p>
-            <h2 id="work-title">After the first result</h2>
+            <p className="eyebrow">After the first result</p>
+            <h2 id="work-title">Selected Work</h2>
           </div>
           <div className="work-intro">
             <p>

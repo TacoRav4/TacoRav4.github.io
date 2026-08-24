@@ -20,21 +20,21 @@ export const staticRoutes: RouteDefinition[] = [
   },
   {
     pathname: "/work/quickbin/",
-    title: "QuickBin / JGI Experience — Zihao (Jason) Zhang",
+    title: "QuickBin / JGI Experience: Zihao (Jason) Zhang",
     description:
       "Retraining QuickBin for PacBio HiFi under a leakage-safe split, and the external test that reordered the ranking.",
     Page: QuickBinCaseStudy,
   },
   {
     pathname: "/work/tonal-inference/",
-    title: "Tonal Inference Modeling — Zihao (Jason) Zhang",
+    title: "Tonal Inference Modeling: Zihao (Jason) Zhang",
     description:
       "A learned memory beat the baseline on synthetic data. Real MIDI then exposed the representation underneath.",
     Page: TonalInferenceCaseStudy,
   },
   {
     pathname: "/work/connect-four/",
-    title: "Connect Four Benchmark Audit — Zihao (Jason) Zhang",
+    title: "Connect Four Benchmark Audit: Zihao (Jason) Zhang",
     description:
       "Fixing the benchmark before trusting the agent: a frozen holdout, reproduced game-for-game on a second machine.",
     Page: ConnectFourCaseStudy,

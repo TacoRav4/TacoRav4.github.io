@@ -9,7 +9,8 @@ export default function QuickBinCaseStudy() {
             ← Back to selected work
           </a>
           <p className="eyebrow">
-            Case study 01 · Experience · DOE Joint Genome Institute
+            Case study 01 · Experience · DOE Joint Genome Institute · Affiliate
+            Intern · May 22 – July 25, 2026
           </p>
           <h1>Building trustworthy evidence for neural metagenome binning</h1>
           <div className="case-summary">

@@ -1055,7 +1055,7 @@ summary {
   }
 
   .thread-link {
-    transform: rotate(90deg);
+    writing-mode: vertical-rl;
     justify-self: center;
   }
 

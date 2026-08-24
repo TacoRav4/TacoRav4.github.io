@@ -382,8 +382,8 @@ export default function AudienceProjectGrid() {
           <img
             className="profile-photo"
             src={sitePath("/headshot.jpg")}
-            width={1000}
-            height={1500}
+            width={1200}
+            height={1800}
             alt="Zihao (Jason) Zhang"
           />
         </figure>

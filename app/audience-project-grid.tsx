@@ -92,6 +92,7 @@ const projects = [
       height: 614,
       alt: "Synthetic terrain map showing the optimal A* route and the weighted A* route from start to goal.",
     },
+    href: "/work/astar/",
   },
   {
     id: "tonal",
@@ -163,6 +164,7 @@ const projects = [
       height: 1080,
       alt: "Decadal harmonic surprisal means with quadratic fits under three weighting schemes. The unweighted line bends downward within the observed range, while weighting by song count or inverse variance removes that shape.",
     },
+    href: "/work/harmonic-surprisal/",
   },
   {
     id: "connect-four",

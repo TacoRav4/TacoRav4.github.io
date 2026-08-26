@@ -10,6 +10,11 @@ const routes = {
     "../dist/work/connect-four/index.html",
     import.meta.url,
   ),
+  astar: new URL("../dist/work/astar/index.html", import.meta.url),
+  harmonic: new URL(
+    "../dist/work/harmonic-surprisal/index.html",
+    import.meta.url,
+  ),
 };
 const rawBasePath = process.env.SITE_BASE_PATH ?? "/";
 const basePath =
@@ -34,6 +39,14 @@ test("prerenders the portfolio homepage without starter content", async () => {
   assert.match(html, /Modeling how tonal center inference updates over time/);
   assert.match(html, /Harmonic surprisal across a century of popular music/);
   assert.match(html, /Benchmarking an old Connect Four agent/);
+  assert.match(
+    html,
+    new RegExp(`href="${escapedBasePath}work/astar/"`),
+  );
+  assert.match(
+    html,
+    new RegExp(`href="${escapedBasePath}work/harmonic-surprisal/"`),
+  );
   assert.match(html, /Better memory could not fix a lossy representation/);
   assert.match(
     html,
@@ -106,6 +119,46 @@ test("prerenders both deep case studies", async () => {
   assert.match(tonalHtml, /Attribution and next question/);
 });
 
+test("prerenders the A-star case study", async () => {
+  const html = await readRoute(routes.astar);
+  assert.match(html, /Terrain-aware pathfinding with A\* heuristics/);
+  assert.match(html, /81\.25% fewer/);
+  assert.match(html, /98\.57% fewer/);
+  assert.match(html, /1\.83% higher/);
+  assert.match(
+    html,
+    /The course material and clean reconstruction stay separate/,
+  );
+  assert.match(html, /A code-release page needs a separate license decision/);
+  assert.match(
+    html,
+    new RegExp(
+      "src=\"" + escapedBasePath + "astar/path-comparison\\.svg\"",
+    ),
+  );
+});
+
+test("prerenders the harmonic surprisal case study", async () => {
+  const html = await readRoute(routes.harmonic);
+  assert.match(html, /Harmonic surprisal across a century of popular music/);
+  assert.match(html, /667,858 rows/);
+  assert.match(html, /277,925 songs/);
+  assert.match(html, /Weighting changed the temporal conclusion/);
+  assert.match(html, /Neither weighted model retained an in-range inverted-U/);
+  assert.match(html, /Code terms and dataset terms are separate/);
+  assert.match(html, /Apache-2\.0/);
+  assert.match(html, /CC BY-NC-4\.0/);
+  assert.match(
+    html,
+    new RegExp(
+      "src=\"" +
+        escapedBasePath +
+        "harmonic/temporal-sensitivity\\.png\"",
+    ),
+  );
+  assert.match(html, /raw-data download/);
+});
+
 test("prerenders the Connect Four evidence card", async () => {
   const html = await readRoute(routes.home);
   assert.match(html, /Benchmarking an old Connect Four agent/);
@@ -166,11 +219,20 @@ test("prerenders the approved contact and resume links", async () => {
 });
 
 test("emits static assets and route-specific metadata", async () => {
-  const [homeHtml, quickbinHtml, tonalHtml, connectFourHtml] = await Promise.all([
+  const [
+    homeHtml,
+    quickbinHtml,
+    tonalHtml,
+    connectFourHtml,
+    astarHtml,
+    harmonicHtml,
+  ] = await Promise.all([
     readRoute(routes.home),
     readRoute(routes.quickbin),
     readRoute(routes.tonal),
     readRoute(routes.connectFour),
+    readRoute(routes.astar),
+    readRoute(routes.harmonic),
   ]);
 
   assert.match(
@@ -188,6 +250,11 @@ test("emits static assets and route-specific metadata", async () => {
   assert.match(quickbinHtml, /<title>QuickBin \/ JGI Experience/);
   assert.match(tonalHtml, /<title>Tonal Inference Modeling/);
   assert.match(connectFourHtml, /<title>Connect Four Benchmark Audit/);
+  assert.match(astarHtml, /<title>A\* Terrain Pathfinding/);
+  assert.match(
+    harmonicHtml,
+    /<title>Harmonic Surprisal Across Popular Music/,
+  );
 
   for (const asset of [
     "headshot.jpg",

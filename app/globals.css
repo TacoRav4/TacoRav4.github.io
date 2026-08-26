@@ -726,6 +726,20 @@ summary {
   font-size: 1.1rem;
 }
 
+.case-takeaway {
+  max-width: 46rem;
+  margin: 1.75rem 0 0;
+  padding: 1rem 0 1rem 1rem;
+  border-left: 3px solid var(--teal);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.6 !important;
+}
+
+.case-takeaway.reversal {
+  border-left-color: var(--rust);
+}
+
 .chapter p,
 .chapter li,
 .chapter dd {
@@ -925,6 +939,17 @@ summary {
   color: var(--graphite);
   font-size: 0.9rem;
   line-height: 1.55;
+}
+
+.case-table-wrap {
+  max-width: 46rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.case-table-wrap .gate-table {
+  min-width: 34rem;
+  margin: 0;
 }
 
 .gate-table th,

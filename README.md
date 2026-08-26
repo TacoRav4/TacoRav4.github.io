@@ -9,6 +9,8 @@ evidence-focused portfolio for Zihao (Jason) Zhang.
 - `/work/quickbin/` - QuickBin/JGI experience case study
 - `/work/tonal-inference/` - recurrent tonal-inference research case study
 - `/work/connect-four/` - held-out Connect Four benchmark audit
+- `/work/astar/` - terrain-aware A* pathfinding case study
+- `/work/harmonic-surprisal/` - harmonic surprisal sensitivity case study
 
 ## Local development
 

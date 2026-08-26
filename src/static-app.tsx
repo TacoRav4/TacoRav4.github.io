@@ -3,6 +3,8 @@ import Home from "../app/page";
 import QuickBinCaseStudy from "../app/work/quickbin/page";
 import TonalInferenceCaseStudy from "../app/work/tonal-inference/page";
 import ConnectFourCaseStudy from "../app/work/connect-four/page";
+import AStarCaseStudy from "../app/work/astar/page";
+import HarmonicSurprisalCaseStudy from "../app/work/harmonic-surprisal/page";
 
 type RouteDefinition = {
   pathname: string;
@@ -38,6 +40,20 @@ export const staticRoutes: RouteDefinition[] = [
     description:
       "Fixing the benchmark before trusting the agent: a frozen holdout, reproduced game-for-game on a second machine.",
     Page: ConnectFourCaseStudy,
+  },
+  {
+    pathname: "/work/astar/",
+    title: "A* Terrain Pathfinding: Zihao (Jason) Zhang",
+    description:
+      "Terrain-aware heuristics preserved optimal path cost. Weighted A* reduced expansions with a measured path-cost tradeoff.",
+    Page: AStarCaseStudy,
+  },
+  {
+    pathname: "/work/harmonic-surprisal/",
+    title: "Harmonic Surprisal Across Popular Music: Zihao (Jason) Zhang",
+    description:
+      "A reconstructed R analysis tested an inverted-U hypothesis. Weighting by decade sample size changed the interpretation.",
+    Page: HarmonicSurprisalCaseStudy,
   },
 ];
 

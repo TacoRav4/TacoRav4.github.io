@@ -81,9 +81,13 @@ test("prerenders both deep case studies", async () => {
     quickbinHtml,
     /<h1>Building trustworthy evidence for neural metagenome binning<\/h1>/,
   );
-  assert.match(quickbinHtml, /Contamination held; the composite ranking changed/);
+  assert.match(
+    quickbinHtml,
+    /The Total Score leader changed: AM1 internally, Shipping on CAMI II/,
+  );
   assert.match(quickbinHtml, /shared-U2500 universe/);
-  assert.match(quickbinHtml, /Candidate \/ AM1/);
+  assert.match(quickbinHtml, /Internal and external Total Score rankings/);
+  assert.match(quickbinHtml, /Shipping: Rank 3 → Rank 1 on CAMI II/);
   assert.match(quickbinHtml, /External community: N = 1/);
   assert.match(quickbinHtml, /Contamination fell in one CAMI II community too/);
   assert.doesNotMatch(quickbinHtml, /The same direction appeared/);

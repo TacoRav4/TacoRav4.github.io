@@ -150,7 +150,7 @@ export default function QuickBinCaseStudy() {
             </p>
             <figure className="quickbin-diagram">
               <svg
-                viewBox="0 0 900 300"
+                viewBox="0 0 970 300"
                 role="img"
                 aria-labelledby="split-diagram-title split-diagram-desc"
               >
@@ -198,83 +198,83 @@ export default function QuickBinCaseStudy() {
 
                 <path
                   className="diagram-line"
-                  d="M 210 150 H 270"
+                  d="M 210 150 H 260"
                   markerEnd="url(#split-arrow)"
                 />
 
                 <rect
                   className="diagram-box"
-                  x="280"
+                  x="270"
                   y="40"
-                  width="150"
+                  width="160"
                   height="60"
                 />
-                <text className="diagram-label" x="355" y="76">
+                <text className="diagram-label" x="350" y="76">
                   1,435 train
                 </text>
                 <rect
                   className="diagram-box"
-                  x="280"
+                  x="270"
                   y="120"
-                  width="150"
+                  width="160"
                   height="60"
                 />
-                <text className="diagram-label" x="355" y="156">
+                <text className="diagram-label" x="350" y="156">
                   279 validation
                 </text>
                 <rect
                   className="diagram-box"
-                  x="280"
+                  x="270"
                   y="200"
-                  width="150"
+                  width="160"
                   height="60"
                 />
-                <text className="diagram-label" x="355" y="236">
+                <text className="diagram-label" x="350" y="236">
                   299 evaluation
                 </text>
 
                 <path
                   className="diagram-line"
-                  d="M 430 150 H 500"
+                  d="M 430 150 H 480"
                   markerEnd="url(#split-arrow)"
                 />
 
                 <rect
                   className="diagram-box"
-                  x="500"
+                  x="490"
                   y="80"
-                  width="170"
+                  width="200"
                   height="140"
                 />
-                <text className="diagram-label" x="585" y="128">
-                  <tspan x="585">training examples</tspan>
-                  <tspan x="585" dy="28">
+                <text className="diagram-label" x="590" y="128">
+                  <tspan x="590">training examples</tspan>
+                  <tspan x="590" dy="28">
                     generated
                   </tspan>
-                  <tspan className="diagram-small" x="585" dy="26">
+                  <tspan className="diagram-small" x="590" dy="26">
                     train-only
                   </tspan>
                 </text>
 
                 <path
                   className="diagram-line"
-                  d="M 670 150 H 720"
+                  d="M 690 150 H 740"
                   markerEnd="url(#split-arrow)"
                 />
 
                 <rect
                   className="diagram-box diagram-confirmed"
-                  x="720"
+                  x="750"
                   y="80"
-                  width="160"
+                  width="200"
                   height="140"
                 />
-                <text className="diagram-label" x="800" y="128">
-                  <tspan x="800">zero cross-split</tspan>
-                  <tspan x="800" dy="28">
+                <text className="diagram-label" x="850" y="128">
+                  <tspan x="850">zero cross-split</tspan>
+                  <tspan x="850" dy="28">
                     leakage
                   </tspan>
-                  <tspan x="800" dy="28">
+                  <tspan x="850" dy="28">
                     confirmed
                   </tspan>
                 </text>
@@ -363,36 +363,41 @@ export default function QuickBinCaseStudy() {
 
           <section className="chapter reversal" id="external-reversal">
             <p className="eyebrow">04 · External ordering reversal</p>
-            <h2>Contamination held; the composite ranking changed</h2>
+            <h2>
+              The Total Score leader changed: AM1 internally, Shipping on CAMI
+              II
+            </h2>
             <p>
-              The external pipeline completed and graded all three networks
-              on CAMI II PacBio sample 14. Both retrained models again
-              reduced contamination, while Shipping retained the highest
-              Total Score because the retrained models recovered less. The
-              comparison involved one community and a changed QuickBin
-              runtime, so it cannot isolate distribution shift from runtime
-              differences.
+              The internal genome-held-out evaluation ranked AM1 first by Total
+              Score. The contamination-focused candidate ranked second, with
+              Shipping third. On CAMI II PacBio sample 14, Shipping ranked
+              first. AM1 ranked second, while the contamination-focused
+              candidate ranked third. Both retrained models reduced
+              contamination, but gave up enough recovery that Shipping
+              retained the highest Total Score. Because CAMI changed the
+              dataset and truth universe while the QuickBin runtime also
+              changed, this reversal does not isolate distribution shift.
             </p>
             <figure className="quickbin-diagram">
               <svg
-                viewBox="0 0 900 320"
+                viewBox="0 0 900 360"
                 role="img"
                 aria-labelledby="reversal-diagram-title reversal-diagram-desc"
               >
                 <title id="reversal-diagram-title">
-                  Internal contamination improvement and external tradeoff
+                  Internal and external Total Score rankings
                 </title>
                 <desc id="reversal-diagram-desc">
-                  The internal trace shows contamination decreasing from
-                  Shipping 1.7530 to AM1 1.3724. The external CAMI II trace
-                  shows Shipping retaining the highest Total Score while AM1
-                  and the contamination-focused candidate had lower
-                  contamination but lower Total Score, so the ordering did
-                  not carry over.
+                  Two rows compare within-context Total Score rankings. On the
+                  scale2000 genome-held-out evaluation, AM1 ranks first,
+                  contamination-focused candidate second, and Shipping third.
+                  On CAMI II sample 14, Shipping ranks first, AM1 second, and
+                  contamination-focused candidate third. The rows show order
+                  only; raw Total Scores are not comparable across contexts.
                 </desc>
                 <defs>
                   <marker
-                    id="internal-arrow"
+                    id="reversal-arrow"
                     viewBox="0 0 10 10"
                     refX="9"
                     refY="5"
@@ -408,100 +413,123 @@ export default function QuickBinCaseStudy() {
                 </defs>
 
                 <text className="diagram-kicker" x="20" y="30">
-                  Internal · contamination (lower is better)
+                  Rank 1 → Rank 3 · higher Total Score to lower Total Score
                 </text>
-                <rect
-                  className="diagram-box"
-                  x="20"
-                  y="50"
-                  width="220"
-                  height="80"
-                />
-                <text className="diagram-label" x="130" y="86">
-                  <tspan x="130">Shipping</tspan>
-                  <tspan x="130" dy="25">
-                    1.7530
-                  </tspan>
+                <text className="diagram-kicker" x="20" y="58">
+                  Internal · scale2000 evaluation · Total Score
                 </text>
-                <path
-                  className="diagram-line"
-                  d="M 240 90 H 660"
-                  markerEnd="url(#internal-arrow)"
-                />
-                <text className="diagram-small" x="450" y="76">
-                  lower contamination
+                <text className="diagram-small" x="190" y="84">
+                  Rank 1
+                </text>
+                <text className="diagram-small" x="450" y="84">
+                  Rank 2
+                </text>
+                <text className="diagram-small" x="710" y="84">
+                  Rank 3
                 </text>
                 <rect
                   className="diagram-box diagram-confirmed"
-                  x="660"
-                  y="50"
-                  width="220"
-                  height="80"
+                  x="100"
+                  y="95"
+                  width="180"
+                  height="70"
                 />
-                <text className="diagram-label" x="770" y="86">
-                  <tspan x="770">AM1</tspan>
-                  <tspan x="770" dy="25">
-                    1.3724
-                  </tspan>
+                <text className="diagram-label" x="190" y="137">
+                  AM1
+                </text>
+                <path
+                  className="diagram-line"
+                  d="M 280 130 H 340"
+                  markerEnd="url(#reversal-arrow)"
+                />
+                <rect
+                  className="diagram-box"
+                  x="360"
+                  y="95"
+                  width="180"
+                  height="70"
+                />
+                <text className="diagram-label" x="450" y="137">
+                  Candidate
+                </text>
+                <path
+                  className="diagram-line"
+                  d="M 540 130 H 600"
+                  markerEnd="url(#reversal-arrow)"
+                />
+                <rect
+                  className="diagram-box"
+                  x="620"
+                  y="95"
+                  width="180"
+                  height="70"
+                />
+                <text className="diagram-label" x="710" y="137">
+                  Shipping
                 </text>
 
-                <text className="diagram-kicker" x="20" y="182">
-                  External · CAMI II
+                <text className="diagram-break-label" x="450" y="196">
+                  Shipping: Rank 3 → Rank 1 on CAMI II
+                </text>
+
+                <text className="diagram-kicker" x="20" y="232">
+                  External · CAMI II sample 14 · Total Score
+                </text>
+                <text className="diagram-small" x="190" y="258">
+                  Rank 1
+                </text>
+                <text className="diagram-small" x="450" y="258">
+                  Rank 2
+                </text>
+                <text className="diagram-small" x="710" y="258">
+                  Rank 3
                 </text>
                 <rect
-                  className="diagram-box"
-                  x="20"
-                  y="200"
-                  width="250"
-                  height="80"
+                  className="diagram-box diagram-confirmed"
+                  x="100"
+                  y="269"
+                  width="180"
+                  height="70"
                 />
-                <text className="diagram-label" x="145" y="233">
-                  <tspan x="145">Shipping</tspan>
-                  <tspan className="diagram-small" x="145" dy="25">
-                    highest Total Score
-                  </tspan>
+                <text className="diagram-label" x="190" y="311">
+                  Shipping
                 </text>
                 <path
-                  className="diagram-line diagram-line-broken"
-                  d="M 270 240 H 415 M 485 240 H 630"
-                />
-                <circle
-                  className="diagram-break"
-                  cx="450"
-                  cy="240"
-                  r="20"
-                />
-                <path
-                  className="diagram-break-mark"
-                  d="M 441 231 L 459 249 M 459 231 L 441 249"
+                  className="diagram-line"
+                  d="M 280 304 H 340"
+                  markerEnd="url(#reversal-arrow)"
                 />
                 <rect
                   className="diagram-box"
-                  x="630"
-                  y="200"
-                  width="250"
-                  height="80"
+                  x="360"
+                  y="269"
+                  width="180"
+                  height="70"
                 />
-                <text className="diagram-label" x="755" y="225">
-                  <tspan x="755">Candidate / AM1</tspan>
-                  <tspan className="diagram-small" x="755" dy="23">
-                    lower contamination
-                  </tspan>
-                  <tspan className="diagram-small" x="755" dy="21">
-                    lower Total Score
-                  </tspan>
+                <text className="diagram-label" x="450" y="311">
+                  AM1
                 </text>
-                <text
-                  className="diagram-break-label"
-                  x="450"
-                  y="300"
-                >
-                  ordering did not carry over
+                <path
+                  className="diagram-line"
+                  d="M 540 304 H 600"
+                  markerEnd="url(#reversal-arrow)"
+                />
+                <rect
+                  className="diagram-box"
+                  x="620"
+                  y="269"
+                  width="180"
+                  height="70"
+                />
+                <text className="diagram-label" x="710" y="311">
+                  Candidate
                 </text>
               </svg>
               <figcaption className="boundary">
-                Newly drawn explanatory diagram from report-safe facts; not a
-                reproduction of an internal figure.
+                Within-context Total Score ordering only. CAMI II uses one
+                external community (N = 1), and its dataset and truth
+                universe differ from the internal benchmark while the
+                QuickBin runtime also changed.
               </figcaption>
             </figure>
             <p className="boundary">

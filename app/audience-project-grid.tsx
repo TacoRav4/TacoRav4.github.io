@@ -96,7 +96,7 @@ const projects = [
   },
   {
     id: "structured-review",
-    className: "compact",
+    className: "wide",
     eyebrow: "Structured Review Lab · AI workflow",
     title: "A document-review workflow that checks its own evidence",
     story:
@@ -249,18 +249,18 @@ const projects = [
 const order: Record<Route, readonly string[]> = {
   industry: [
     "quickbin",
-    "structured-review",
     "astar",
     "tonal",
     "harmonic",
+    "structured-review",
     "connect-four",
   ],
   research: [
     "tonal",
     "harmonic",
     "quickbin",
-    "structured-review",
     "astar",
+    "structured-review",
     "connect-four",
   ],
 };

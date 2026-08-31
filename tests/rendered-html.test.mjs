@@ -31,6 +31,15 @@ async function readRoute(route) {
   return readFile(route, "utf8");
 }
 
+function assertInOrder(html, markers) {
+  let previous = -1;
+  for (const marker of markers) {
+    const next = html.indexOf(marker);
+    assert.ok(next > previous, `Expected ${marker} after the previous marker`);
+    previous = next;
+  }
+}
+
 test("prerenders the portfolio homepage without starter content", async () => {
   const html = await readRoute(routes.home);
   assert.match(html, /Zihao \(Jason\) Zhang/);
@@ -59,6 +68,18 @@ test("prerenders the portfolio homepage without starter content", async () => {
     html,
     new RegExp(`href="${escapedBasePath}work/structured-review-lab/"`),
   );
+  assert.match(
+    html,
+    /class="project-card wide" data-flip="structured-review"/,
+  );
+  assertInOrder(html, [
+    'data-flip="quickbin"',
+    'data-flip="astar"',
+    'data-flip="tonal"',
+    'data-flip="harmonic"',
+    'data-flip="structured-review"',
+    'data-flip="connect-four"',
+  ]);
   assert.match(
     html,
     new RegExp(`src="${escapedBasePath}structured-review/review-flow\\.svg"`),

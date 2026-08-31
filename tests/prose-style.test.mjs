@@ -20,6 +20,10 @@ const routes = [
     "../dist/work/harmonic-surprisal/index.html",
     import.meta.url,
   ),
+  new URL(
+    "../dist/work/structured-review-lab/index.html",
+    import.meta.url,
+  ),
 ];
 
 const SCANNED_TAGS = ["p", "h1", "h2", "h3", "h4", "figcaption", "dd", "li"];

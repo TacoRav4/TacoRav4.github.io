@@ -921,6 +921,10 @@ summary {
   height: auto;
 }
 
+.case-figure-responsive img {
+  aspect-ratio: var(--case-figure-ratio);
+}
+
 .case-figure figcaption {
   max-width: none;
   margin: 0;
@@ -1227,6 +1231,10 @@ summary {
     padding: 0.55rem 0;
     font-size: 0.75rem;
     line-height: 1.5;
+  }
+
+  .case-figure-responsive img {
+    aspect-ratio: var(--case-figure-mobile-ratio);
   }
 
   .chapter-row ol {

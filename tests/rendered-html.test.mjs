@@ -15,6 +15,10 @@ const routes = {
     "../dist/work/harmonic-surprisal/index.html",
     import.meta.url,
   ),
+  structuredReview: new URL(
+    "../dist/work/structured-review-lab/index.html",
+    import.meta.url,
+  ),
 };
 const rawBasePath = process.env.SITE_BASE_PATH ?? "/";
 const basePath =
@@ -33,8 +37,12 @@ test("prerenders the portfolio homepage without starter content", async () => {
   assert.match(html, /Research Engineer/);
   assert.match(html, /After the first result/);
   assert.match(html, /Selected Work/);
-  assert.match(html, /Five projects, one habit/);
+  assert.match(html, /Six projects, one habit/);
   assert.match(html, /Adapting QuickBin for PacBio metagenome binning/);
+  assert.match(
+    html,
+    /A document-review workflow that checks its own evidence/,
+  );
   assert.match(html, /Terrain-aware pathfinding with A\* heuristics/);
   assert.match(html, /Modeling how tonal center inference updates over time/);
   assert.match(html, /Harmonic surprisal across a century of popular music/);
@@ -46,6 +54,14 @@ test("prerenders the portfolio homepage without starter content", async () => {
   assert.match(
     html,
     new RegExp(`href="${escapedBasePath}work/harmonic-surprisal/"`),
+  );
+  assert.match(
+    html,
+    new RegExp(`href="${escapedBasePath}work/structured-review-lab/"`),
+  );
+  assert.match(
+    html,
+    new RegExp(`src="${escapedBasePath}structured-review/review-flow\\.svg"`),
   );
   assert.match(html, /Better memory could not fix a lossy representation/);
   assert.match(
@@ -163,6 +179,43 @@ test("prerenders the harmonic surprisal case study", async () => {
   assert.match(html, /raw-data download/);
 });
 
+test("prerenders the Structured Review Lab case study", async () => {
+  const html = await readRoute(routes.structuredReview);
+  assert.match(html, /A document-review workflow that can refuse to guess/);
+  assert.match(html, /exact-substring evidence/i);
+  assert.match(html, /Human review required/);
+  assert.match(html, /open-question synthetic document/);
+  assert.match(html, /20 synthetic fixtures/);
+  assert.match(html, /Two synthetic fixtures/);
+  assert.match(
+    html,
+    new RegExp(
+      `src="${escapedBasePath}structured-review/review-flow\\.svg"`,
+    ),
+  );
+  assert.match(
+    html,
+    new RegExp(
+      `srcSet="${escapedBasePath}structured-review/review-flow-mobile\\.svg"`,
+    ),
+  );
+  assert.match(
+    html,
+    new RegExp(
+      `srcSet="${escapedBasePath}structured-review/normal-result-mobile\\.png"`,
+    ),
+  );
+  assert.match(
+    html,
+    new RegExp(
+      `src="${escapedBasePath}structured-review/question-review\\.png"`,
+    ),
+  );
+  assert.match(html, /not model-accuracy results/);
+  assert.match(html, /cannot establish broad accuracy/);
+  assert.doesNotMatch(html, /github\.com\/.*structured-review/i);
+});
+
 test("prerenders the Connect Four evidence card", async () => {
   const html = await readRoute(routes.home);
   assert.match(html, /Benchmarking an old Connect Four agent/);
@@ -230,6 +283,7 @@ test("emits static assets and route-specific metadata", async () => {
     connectFourHtml,
     astarHtml,
     harmonicHtml,
+    structuredReviewHtml,
   ] = await Promise.all([
     readRoute(routes.home),
     readRoute(routes.quickbin),
@@ -237,6 +291,7 @@ test("emits static assets and route-specific metadata", async () => {
     readRoute(routes.connectFour),
     readRoute(routes.astar),
     readRoute(routes.harmonic),
+    readRoute(routes.structuredReview),
   ]);
 
   assert.match(
@@ -259,6 +314,10 @@ test("emits static assets and route-specific metadata", async () => {
     harmonicHtml,
     /<title>Harmonic Surprisal Across Popular Music/,
   );
+  assert.match(
+    structuredReviewHtml,
+    /<title>Structured Review Lab/,
+  );
 
   for (const asset of [
     "headshot.jpg",
@@ -275,6 +334,13 @@ test("emits static assets and route-specific metadata", async () => {
     "quickbin/merge-decision.svg",
     "tonal/circle-of-fifths-ema-vs-srn.png",
     "tonal/gate-sensitivity-pareto.png",
+    "structured-review/review-flow.svg",
+    "structured-review/review-flow-mobile.svg",
+    "structured-review/normal-result.png",
+    "structured-review/normal-result-mobile.png",
+    "structured-review/question-review.png",
+    "structured-review/human-review-required.png",
+    "structured-review/human-review-required-mobile.png",
   ]) {
     await access(new URL(`../dist/${asset}`, import.meta.url));
   }

@@ -11,6 +11,7 @@ evidence-focused portfolio for Zihao (Jason) Zhang.
 - `/work/connect-four/` - held-out Connect Four benchmark audit
 - `/work/astar/` - terrain-aware A* pathfinding case study
 - `/work/harmonic-surprisal/` - harmonic surprisal sensitivity case study
+- `/work/structured-review-lab/` - Structured Review Lab AI workflow case study
 
 ## Local development
 

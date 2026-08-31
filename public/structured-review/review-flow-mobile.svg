@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 980" role="img" aria-labelledby="title desc">
+  <title id="title">Structured Review Lab validation flow</title>
+  <desc id="desc">A stacked flow shows a synthetic document moving through a provider, Pydantic parsing, exact-substring evidence checks, and two possible review outcomes.</desc>
+  <defs>
+    <marker id="arrow-teal" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#07716c"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#315f9b"/>
+    </marker>
+    <marker id="arrow-rust" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#b84a32"/>
+    </marker>
+    <style>
+      .label { font: 700 18px "IBM Plex Sans", "Avenir Next", Arial, sans-serif; letter-spacing: 1.8px; text-transform: uppercase; }
+      .title { font: 700 29px "IBM Plex Sans", "Avenir Next", Arial, sans-serif; }
+      .copy { font: 400 22px "IBM Plex Sans", "Avenir Next", Arial, sans-serif; }
+      .mono { font: 500 20px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    </style>
+  </defs>
+  <rect width="680" height="980" fill="#f4f1ea"/>
+  <text x="60" y="42" class="label" fill="#07716c">STRUCTURED REVIEW LAB</text>
+  <text x="60" y="78" class="copy" fill="#353b3a">Validation path</text>
+
+  <g stroke-width="2" fill="#fbfaf6">
+    <rect x="60" y="112" width="560" height="116" rx="4" stroke="#315f9b"/>
+    <rect x="60" y="270" width="560" height="116" rx="4" stroke="#315f9b"/>
+    <rect x="60" y="428" width="560" height="116" rx="4" stroke="#07716c"/>
+    <rect x="60" y="586" width="560" height="116" rx="4" stroke="#07716c"/>
+    <rect x="60" y="770" width="260" height="104" rx="4" stroke="#07716c"/>
+    <rect x="360" y="770" width="260" height="104" rx="4" stroke="#b84a32"/>
+  </g>
+
+  <g fill="#353b3a">
+    <text x="88" y="146" class="label" fill="#315f9b">01 · INPUT</text>
+    <text x="88" y="184" class="title">Synthetic document</text>
+    <text x="88" y="211" class="mono">POST /analyze</text>
+
+    <text x="88" y="304" class="label" fill="#315f9b">02 · PROVIDER</text>
+    <text x="88" y="342" class="title">Mock or OpenAI</text>
+    <text x="88" y="369" class="copy">one provider contract</text>
+
+    <text x="88" y="462" class="label" fill="#07716c">03 · SCHEMA</text>
+    <text x="88" y="500" class="title">Pydantic · StructuredReview</text>
+    <text x="88" y="527" class="mono">extra = forbid</text>
+
+    <text x="88" y="620" class="label" fill="#07716c">04 · EVIDENCE</text>
+    <text x="88" y="658" class="title">Exact-substring check</text>
+    <text x="88" y="685" class="mono">source text → result</text>
+
+    <text x="84" y="805" class="label" fill="#07716c">PASS</text>
+    <text x="84" y="839" class="title">Validated</text>
+    <text x="84" y="861" class="mono">status: ok</text>
+
+    <text x="384" y="805" class="label" fill="#b84a32">ESCALATE</text>
+    <text x="384" y="839" class="title">Human review</text>
+    <text x="384" y="861" class="mono">flag or fallback</text>
+  </g>
+
+  <g fill="none" stroke-linecap="round">
+    <path d="M340 228V270" stroke="#315f9b" marker-end="url(#arrow-blue)"/>
+    <path d="M340 386V428" stroke="#315f9b" marker-end="url(#arrow-blue)"/>
+    <path d="M340 544V586" stroke="#07716c" marker-end="url(#arrow-teal)"/>
+    <path d="M340 702V742C340 754 250 754 190 770" stroke="#07716c" marker-end="url(#arrow-teal)"/>
+    <path d="M340 702V742C340 754 430 754 490 770" stroke="#b84a32" marker-end="url(#arrow-rust)"/>
+    <path d="M620 482C654 482 654 330 620 330" stroke="#315f9b" stroke-dasharray="7 7" marker-end="url(#arrow-blue)"/>
+  </g>
+  <text x="405" y="404" class="copy" fill="#315f9b">one retry if invalid</text>
+  <text x="60" y="925" class="copy" fill="#353b3a">Unverified evidence stops here.</text>
+  <text x="60" y="953" class="mono" fill="#b84a32">Errors take the safe review path.</text>
+</svg>

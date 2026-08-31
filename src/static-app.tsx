@@ -5,6 +5,7 @@ import TonalInferenceCaseStudy from "../app/work/tonal-inference/page";
 import ConnectFourCaseStudy from "../app/work/connect-four/page";
 import AStarCaseStudy from "../app/work/astar/page";
 import HarmonicSurprisalCaseStudy from "../app/work/harmonic-surprisal/page";
+import StructuredReviewLabCaseStudy from "../app/work/structured-review-lab/page";
 
 type RouteDefinition = {
   pathname: string;
@@ -54,6 +55,13 @@ export const staticRoutes: RouteDefinition[] = [
     description:
       "A reconstructed R analysis tested an inverted-U hypothesis. Weighting by decade sample size changed the interpretation.",
     Page: HarmonicSurprisalCaseStudy,
+  },
+  {
+    pathname: "/work/structured-review-lab/",
+    title: "Structured Review Lab: Zihao (Jason) Zhang",
+    description:
+      "A local-first React/TypeScript and FastAPI/Pydantic workflow validates model output against a fixed contract and checks evidence before it reaches the result view.",
+    Page: StructuredReviewLabCaseStudy,
   },
 ];
 

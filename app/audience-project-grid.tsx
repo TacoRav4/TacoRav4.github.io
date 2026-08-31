@@ -95,6 +95,47 @@ const projects = [
     href: "/work/astar/",
   },
   {
+    id: "structured-review",
+    className: "compact",
+    eyebrow: "Structured Review Lab · AI workflow",
+    title: "A document-review workflow that checks its own evidence",
+    story:
+      "I built a local-first React/TypeScript and FastAPI/Pydantic workflow for synthetic business documents. The app validates structured findings and checks every evidence excerpt against the original input before it reaches the result view.",
+    why: "A valid model response still has to earn its way onto the screen.",
+    proof: [
+      {
+        label: "mock",
+        value:
+          "20 synthetic fixtures · deterministic contract evaluation · schema, grounding, and review precision/recall 1.0",
+        tone: "plain",
+      },
+      {
+        label: "live",
+        value: "2-case API smoke test · gpt-5.6-luna · 2,608.8 ms mean/p50",
+        tone: "plain",
+      },
+      {
+        label: "guardrail",
+        value: "one retry · safe human-review fallback",
+        tone: "plain",
+      },
+    ],
+    boundary:
+      "Mock and live results stay separate. Live values describe two synthetic fixtures, not broad model accuracy or production performance.",
+    detail:
+      "A static flow diagram shows how output earns its way onto the result screen.",
+    visual: {
+      src: "/structured-review/review-flow.svg",
+      mobileSrc: "/structured-review/review-flow-mobile.svg",
+      width: 1200,
+      height: 430,
+      mobileWidth: 680,
+      mobileHeight: 980,
+      alt: "Flow diagram of a synthetic document moving from a Mock or OpenAI provider through Pydantic parsing. Exact-substring evidence checks lead to a validated result or human review.",
+    },
+    href: "/work/structured-review-lab/",
+  },
+  {
     id: "tonal",
     className: "featured",
     eyebrow: "Tonal inference · Research",
@@ -206,8 +247,22 @@ const projects = [
 ] as const;
 
 const order: Record<Route, readonly string[]> = {
-  industry: ["quickbin", "astar", "tonal", "harmonic", "connect-four"],
-  research: ["tonal", "harmonic", "quickbin", "astar", "connect-four"],
+  industry: [
+    "quickbin",
+    "structured-review",
+    "astar",
+    "tonal",
+    "harmonic",
+    "connect-four",
+  ],
+  research: [
+    "tonal",
+    "harmonic",
+    "quickbin",
+    "structured-review",
+    "astar",
+    "connect-four",
+  ],
 };
 
 function ProofBlock({
@@ -386,7 +441,7 @@ export default function AudienceProjectGrid() {
           </div>
           <div className="work-intro">
             <p>
-              Five projects, one habit: the first result is where the checking
+              Six projects, one habit: the first result is where the checking
               starts, not where it stops.
             </p>
             <ul className="work-index" aria-label="Project areas">
@@ -394,6 +449,7 @@ export default function AudienceProjectGrid() {
               <li>Pathfinding</li>
               <li>Music cognition</li>
               <li>Corpus statistics</li>
+              <li>AI workflows</li>
               <li>Game-tree search</li>
             </ul>
             <div className="route-control" aria-labelledby="route-label">

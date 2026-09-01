@@ -440,6 +440,34 @@ h3 {
   margin: 0;
 }
 
+.project-card.wide.figure-first {
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.wide-card-heading .eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.wide-card-heading h3 {
+  margin: 0;
+}
+
+.figure-first-copy {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 2.5rem;
+}
+
+.figure-first-copy > div {
+  min-width: 0;
+}
+
+.figure-first-copy > div > p:first-child,
+.figure-first-copy .proof {
+  margin-top: 0;
+}
+
 .project-card h3 {
   max-width: 16ch;
   margin: 0.5rem 0 1.1rem;
@@ -1099,6 +1127,11 @@ summary {
   .project-card.wide {
     grid-template-columns: 1fr;
     gap: 1.25rem;
+  }
+
+  .figure-first-copy {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .case-hero {

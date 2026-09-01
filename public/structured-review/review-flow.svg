@@ -12,10 +12,10 @@
       <path d="M0 0L10 5L0 10Z" fill="#b84a32"/>
     </marker>
     <style>
-      .label { font: 700 15px "IBM Plex Sans", "Avenir Next", Arial, sans-serif; letter-spacing: 1.7px; text-transform: uppercase; }
-      .title { font: 700 22px "IBM Plex Sans", "Avenir Next", Arial, sans-serif; }
-      .copy { font: 400 17px "IBM Plex Sans", "Avenir Next", Arial, sans-serif; }
-      .mono { font: 500 16px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .label { font: 700 14px "IBM Plex Sans", "Avenir Next", Arial, sans-serif; letter-spacing: 1.6px; text-transform: uppercase; }
+      .title { font: 700 21px "IBM Plex Sans", "Avenir Next", Arial, sans-serif; }
+      .copy { font: 400 16px "IBM Plex Sans", "Avenir Next", Arial, sans-serif; }
+      .mono { font: 500 15px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
     </style>
   </defs>
   <rect width="1200" height="430" fill="#f4f1ea"/>
@@ -23,53 +23,54 @@
   <text x="40" y="72" class="copy" fill="#353b3a">A response earns its way to the result view.</text>
 
   <g stroke-width="2" fill="#fbfaf6">
-    <rect x="36" y="132" width="190" height="148" rx="4" stroke="#315f9b"/>
-    <rect x="276" y="132" width="190" height="148" rx="4" stroke="#315f9b"/>
-    <rect x="516" y="132" width="190" height="148" rx="4" stroke="#07716c"/>
-    <rect x="756" y="132" width="190" height="148" rx="4" stroke="#07716c"/>
-    <rect x="990" y="102" width="174" height="100" rx="4" stroke="#07716c"/>
-    <rect x="990" y="242" width="174" height="100" rx="4" stroke="#b84a32"/>
+    <rect x="25" y="132" width="190" height="148" rx="4" stroke="#315f9b"/>
+    <rect x="235" y="132" width="220" height="148" rx="4" stroke="#315f9b"/>
+    <rect x="475" y="132" width="190" height="148" rx="4" stroke="#07716c"/>
+    <rect x="685" y="132" width="230" height="148" rx="4" stroke="#07716c"/>
+    <rect x="945" y="102" width="230" height="100" rx="4" stroke="#07716c"/>
+    <rect x="945" y="242" width="230" height="100" rx="4" stroke="#b84a32"/>
   </g>
 
   <g fill="#353b3a">
-    <text x="58" y="164" class="label" fill="#315f9b">01 · INPUT</text>
-    <text x="58" y="201" class="title">Document</text>
-    <text x="58" y="232" class="copy">synthetic text</text>
-    <text x="58" y="258" class="mono">POST /analyze</text>
+    <text x="47" y="164" class="label" fill="#315f9b">01 · INPUT</text>
+    <text x="47" y="201" class="title">Document</text>
+    <text x="47" y="232" class="copy">synthetic text</text>
+    <text x="47" y="258" class="mono">POST /analyze</text>
 
-    <text x="298" y="164" class="label" fill="#315f9b">02 · PROVIDER</text>
-    <text x="298" y="201" class="title">Mock or OpenAI</text>
-    <text x="298" y="232" class="copy">one provider contract</text>
-    <text x="298" y="258" class="mono">structured output</text>
+    <text x="257" y="164" class="label" fill="#315f9b">02 · PROVIDER</text>
+    <text x="257" y="201" class="title">Mock or OpenAI</text>
+    <text x="257" y="232" class="copy">one provider contract</text>
+    <text x="257" y="258" class="mono">structured output</text>
 
-    <text x="538" y="164" class="label" fill="#07716c">03 · SCHEMA</text>
-    <text x="538" y="201" class="title">Pydantic</text>
-    <text x="538" y="232" class="copy">StructuredReview</text>
-    <text x="538" y="258" class="mono">extra = forbid</text>
+    <text x="497" y="164" class="label" fill="#07716c">03 · SCHEMA</text>
+    <text x="497" y="201" class="title">Pydantic</text>
+    <text x="497" y="232" class="copy">StructuredReview</text>
+    <text x="497" y="258" class="mono">extra = forbid</text>
 
-    <text x="778" y="164" class="label" fill="#07716c">04 · EVIDENCE</text>
-    <text x="778" y="201" class="title">Grounding check</text>
-    <text x="778" y="232" class="copy">exact substring</text>
-    <text x="778" y="258" class="mono">source text → result</text>
+    <text x="707" y="164" class="label" fill="#07716c">04 · EVIDENCE</text>
+    <text x="707" y="201" class="title">Grounding check</text>
+    <text x="707" y="232" class="copy">exact substring</text>
+    <text x="707" y="258" class="mono">source text → result</text>
 
-    <text x="1012" y="133" class="label" fill="#07716c">PASS</text>
-    <text x="1012" y="166" class="title">Validated</text>
-    <text x="1012" y="187" class="mono">status: ok</text>
+    <text x="967" y="133" class="label" fill="#07716c">PASS</text>
+    <text x="967" y="166" class="title">Validated</text>
+    <text x="967" y="187" class="mono">status: ok</text>
 
-    <text x="1012" y="273" class="label" fill="#b84a32">ESCALATE</text>
-    <text x="1012" y="306" class="title">Human review</text>
-    <text x="1012" y="327" class="mono">flag or fallback</text>
+    <text x="967" y="273" class="label" fill="#b84a32">ESCALATE</text>
+    <text x="967" y="306" class="title">Human review</text>
+    <text x="967" y="327" class="mono">flag or fallback</text>
   </g>
 
   <g fill="none" stroke-linecap="round">
-    <path d="M226 206H276" stroke="#315f9b" marker-end="url(#arrow-blue)"/>
-    <path d="M466 206H516" stroke="#315f9b" marker-end="url(#arrow-blue)"/>
-    <path d="M706 206H756" stroke="#07716c" marker-end="url(#arrow-teal)"/>
-    <path d="M946 206C968 206 965 152 990 152" stroke="#07716c" marker-end="url(#arrow-teal)"/>
-    <path d="M946 206C968 206 965 292 990 292" stroke="#b84a32" marker-end="url(#arrow-rust)"/>
-    <path d="M610 132C610 91 371 91 371 132" stroke="#315f9b" stroke-dasharray="7 7" marker-end="url(#arrow-blue)"/>
+    <path d="M215 206H235" stroke="#315f9b" marker-end="url(#arrow-blue)"/>
+    <path d="M455 206H475" stroke="#315f9b" marker-end="url(#arrow-blue)"/>
+    <path d="M665 206H685" stroke="#07716c" marker-end="url(#arrow-teal)"/>
+    <path d="M915 206C934 206 928 152 945 152" stroke="#07716c" marker-end="url(#arrow-teal)"/>
+    <path d="M915 206C934 206 928 292 945 292" stroke="#b84a32" marker-end="url(#arrow-rust)"/>
+    <path d="M570 132C570 91 345 91 345 132" stroke="#315f9b" stroke-dasharray="7 7" marker-end="url(#arrow-blue)"/>
   </g>
-  <text x="438" y="103" class="copy" fill="#315f9b">one retry if invalid</text>
+  <rect x="378" y="76" width="160" height="32" rx="3" fill="#f4f1ea"/>
+  <text x="395" y="98" class="copy" fill="#315f9b">one retry if invalid</text>
   <text x="40" y="375" class="copy" fill="#353b3a">Provider errors and invalid output take the safe human-review path.</text>
   <text x="40" y="401" class="mono" fill="#b84a32">No unverified evidence reaches a successful result.</text>
 </svg>

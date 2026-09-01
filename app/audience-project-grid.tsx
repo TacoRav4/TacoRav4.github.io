@@ -97,6 +97,7 @@ const projects = [
   {
     id: "structured-review",
     className: "wide",
+    layout: "figure-first",
     eyebrow: "Structured Review Lab · AI workflow",
     title: "A document-review workflow that checks its own evidence",
     story:
@@ -485,6 +486,39 @@ export default function AudienceProjectGrid() {
 
         <div className="project-grid" ref={gridRef}>
           {sortedProjects.map((project) => {
+            if ("layout" in project && project.layout === "figure-first") {
+              return (
+                <article
+                  className={`project-card ${project.className} figure-first`}
+                  key={project.id}
+                  data-flip={project.id}
+                >
+                  <div className="wide-card-heading">
+                    <p className="eyebrow">{project.eyebrow}</p>
+                    <h3>{project.title}</h3>
+                  </div>
+                  <ProjectFigure
+                    visual={project.visual}
+                    className="card-detail-figure wide-card-visual"
+                    caption={project.detail}
+                  />
+                  <div className="wide-card-copy figure-first-copy">
+                    <div>
+                      <p>{project.story}</p>
+                      <p className="card-why">{project.why}</p>
+                    </div>
+                    <div>
+                      <ProofBlock rows={project.proof} />
+                      <p className="boundary">{project.boundary}</p>
+                      <a className="card-link" href={sitePath(project.href)}>
+                        Read case study →
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              );
+            }
+
             if ("layout" in project && project.layout === "split") {
               return (
                 <article

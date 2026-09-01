@@ -40,6 +40,13 @@ function assertInOrder(html, markers) {
   }
 }
 
+function readCard(html, id) {
+  const start = html.indexOf(`data-flip="${id}"`);
+  const end = html.indexOf("</article>", start);
+  assert.ok(start >= 0 && end > start, `Expected a rendered card for ${id}`);
+  return html.slice(start, end);
+}
+
 test("prerenders the portfolio homepage without starter content", async () => {
   const html = await readRoute(routes.home);
   assert.match(html, /Zihao \(Jason\) Zhang/);
@@ -70,8 +77,17 @@ test("prerenders the portfolio homepage without starter content", async () => {
   );
   assert.match(
     html,
-    /class="project-card wide" data-flip="structured-review"/,
+    /class="project-card wide figure-first" data-flip="structured-review"/,
   );
+  const structuredCard = readCard(html, "structured-review");
+  assert.match(structuredCard, /class="wide-card-heading"/);
+  assert.match(structuredCard, /class="wide-card-copy figure-first-copy"/);
+  assert.match(structuredCard, /class="card-detail-figure wide-card-visual"/);
+  assertInOrder(structuredCard, [
+    'class="wide-card-heading"',
+    'class="card-detail-figure wide-card-visual"',
+    'class="wide-card-copy figure-first-copy"',
+  ]);
   assertInOrder(html, [
     'data-flip="quickbin"',
     'data-flip="astar"',

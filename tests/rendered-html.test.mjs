@@ -248,9 +248,28 @@ test("prerenders the Structured Review Lab case study", async () => {
       `src="${escapedBasePath}structured-review/question-review\\.png"`,
     ),
   );
+  assert.match(
+    html,
+    new RegExp(
+      `srcSet="${escapedBasePath}structured-review/question-review-mobile\\.png"`,
+    ),
+  );
   assert.match(html, /not model-accuracy results/);
   assert.match(html, /cannot establish broad accuracy/);
   assert.doesNotMatch(html, /github\.com\/.*structured-review/i);
+});
+
+test("Structured Review flow SVGs embed IBM Plex Sans", async () => {
+  for (const asset of ["review-flow.svg", "review-flow-mobile.svg"]) {
+    const svg = await readFile(
+      new URL(`../dist/structured-review/${asset}`, import.meta.url),
+      "utf8",
+    );
+    assert.match(svg, /data:font\/woff2;base64,/);
+    assert.match(svg, /font-weight: 400/);
+    assert.match(svg, /font-weight: 700/);
+    assert.match(svg, /font-family: "IBM Plex Sans"/);
+  }
 });
 
 test("prerenders the Connect Four evidence card", async () => {
@@ -376,6 +395,7 @@ test("emits static assets and route-specific metadata", async () => {
     "structured-review/normal-result.png",
     "structured-review/normal-result-mobile.png",
     "structured-review/question-review.png",
+    "structured-review/question-review-mobile.png",
     "structured-review/human-review-required.png",
     "structured-review/human-review-required-mobile.png",
   ]) {

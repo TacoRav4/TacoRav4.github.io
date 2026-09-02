@@ -768,6 +768,11 @@ summary {
   border-left-color: var(--rust);
 }
 
+.case-return-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+
 .chapter p,
 .chapter li,
 .chapter dd {
@@ -951,6 +956,11 @@ summary {
 
 .case-figure-responsive img {
   aspect-ratio: var(--case-figure-ratio);
+}
+
+.case-figure-screenshot img {
+  aspect-ratio: 44 / 25;
+  object-fit: cover;
 }
 
 .case-figure figcaption {

@@ -26,6 +26,11 @@ const routes = [
   ),
 ];
 
+const svgRoutes = [
+  new URL("../dist/structured-review/review-flow.svg", import.meta.url),
+  new URL("../dist/structured-review/review-flow-mobile.svg", import.meta.url),
+];
+
 const SCANNED_TAGS = ["p", "h1", "h2", "h3", "h4", "figcaption", "dd", "li"];
 const DATA_LABEL_CLASSES = new Set(["proof", "eyebrow"]);
 
@@ -70,6 +75,18 @@ export function extractReaderFacingFields(html) {
   }
   for (const match of clean.matchAll(/<title[^>]*>([\s\S]*?)<\/title>/gi)) {
     fields.push({ kind: "title", value: decode(match[1]) });
+  }
+  return fields;
+}
+
+export function extractSvgReaderFacingFields(svg) {
+  const fields = [];
+  for (const tag of ["title", "desc", "text"]) {
+    const pattern = new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`, "gi");
+    for (const match of svg.matchAll(pattern)) {
+      const value = decode(match[1]);
+      if (value) fields.push({ kind: `svg-${tag}`, value });
+    }
   }
   return fields;
 }
@@ -144,6 +161,19 @@ test("reader-facing fields contain no coordinated triads", async () => {
   for (const route of routes) {
     const html = await readFile(route, "utf8");
     for (const violation of findViolations(extractReaderFacingFields(html))) {
+      violations.push(
+        `${route.pathname.replace(/^.*dist/, "dist")} [${violation.kind}/${violation.name}]: ${violation.value}`,
+      );
+    }
+  }
+  assert.deepEqual(violations, [], `coordinated triads found:\n${violations.join("\n")}`);
+});
+
+test("Structured Review SVG text contains no coordinated triads", async () => {
+  const violations = [];
+  for (const route of svgRoutes) {
+    const svg = await readFile(route, "utf8");
+    for (const violation of findViolations(extractSvgReaderFacingFields(svg))) {
       violations.push(
         `${route.pathname.replace(/^.*dist/, "dist")} [${violation.kind}/${violation.name}]: ${violation.value}`,
       );

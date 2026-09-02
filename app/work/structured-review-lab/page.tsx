@@ -31,7 +31,7 @@ function ResponsiveFigure({
 
   return (
     <figure
-      className={`case-figure${figureStyle ? " case-figure-responsive" : ""}`}
+      className={`case-figure case-figure-breakout case-figure-screenshot${figureStyle ? " case-figure-responsive" : ""}`}
       style={figureStyle}
     >
       <picture>
@@ -161,10 +161,10 @@ export default function StructuredReviewLabCaseStudy() {
             <ResponsiveFigure
               src="/structured-review/normal-result.png"
               mobileSrc="/structured-review/normal-result-mobile.png"
-              mobileWidth={390}
-              mobileHeight={844}
-              width={2818}
-              height={1586}
+              mobileWidth={360}
+              mobileHeight={812}
+              width={2670}
+              height={1490}
               alt="Structured Review Lab Mock result for the release-brief synthetic document. The page shows a validated summary. Findings retain source evidence and model-reported confidence. No human-review banner is visible."
               caption="Mock mode. The release-brief fixture uses synthetic input. This result passed the schema and evidence checks. Confidence is model-reported and not calibrated."
             />
@@ -181,18 +181,21 @@ export default function StructuredReviewLabCaseStudy() {
             </p>
             <ResponsiveFigure
               src="/structured-review/question-review.png"
-              width={2804}
-              height={1592}
+              mobileSrc="/structured-review/question-review-mobile.png"
+              mobileWidth={360}
+              mobileHeight={812}
+              width={2814}
+              height={1584}
               alt="Structured Review Lab Mock result for the open-question synthetic document. The page shows a grounded question and a visible Human review required status."
               caption="Mock mode. The open-question fixture keeps a grounded question visible for a person to resolve. This is a valid status: ok response with needs_human_review: true."
             />
             <ResponsiveFigure
               src="/structured-review/human-review-required.png"
               mobileSrc="/structured-review/human-review-required-mobile.png"
-              mobileWidth={390}
-              mobileHeight={844}
-              width={2804}
-              height={1586}
+              mobileWidth={360}
+              mobileHeight={812}
+              width={2768}
+              height={1574}
               alt="Structured Review Lab Mock result for the warehouse-rehearsal synthetic document. The page shows a grounded risk finding and a visible Human review required status."
               caption="Mock mode. The warehouse-rehearsal fixture uses synthetic input. This is a valid status: ok response with needs_human_review: true. It is not the provider-failure fallback."
             />
@@ -318,7 +321,10 @@ export default function StructuredReviewLabCaseStudy() {
               A model response is only the beginning. The useful work is the
               validation boundary that decides whether it can be shown.
             </p>
-            <a className="card-link" href={sitePath("/#work")}>
+            <a
+              className="card-link case-return-link"
+              href={sitePath("/#work")}
+            >
               Back to selected work →
             </a>
           </section>

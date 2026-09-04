@@ -83,6 +83,8 @@ test("prerenders the portfolio homepage without starter content", async () => {
   assert.match(structuredCard, /class="wide-card-heading"/);
   assert.match(structuredCard, /class="wide-card-copy figure-first-copy"/);
   assert.match(structuredCard, /class="card-detail-figure wide-card-visual"/);
+  assert.match(structuredCard, /2-case recorded provider smoke/);
+  assert.match(structuredCard, /does not include the ReviewService policy/);
   assertInOrder(structuredCard, [
     'class="wide-card-heading"',
     'class="card-detail-figure wide-card-visual"',
@@ -254,9 +256,28 @@ test("prerenders the Structured Review Lab case study", async () => {
       `srcSet="${escapedBasePath}structured-review/question-review-mobile\\.png"`,
     ),
   );
+  assert.match(
+    html,
+    /href="https:\/\/github\.com\/TacoRav4\/structured-review-lab"/,
+  );
+  assert.match(html, /The source is public in the/);
+  assert.doesNotMatch(html, /<dt>Source link<\/dt>/);
+  assert.match(html, /Runtime direct dependencies are pinned/);
+  assert.match(html, /Mock quality gate against the current 20-fixture set/);
+  assert.match(
+    html,
+    /Review precision: not defined because the run produced no positive review predictions/,
+  );
+  assert.match(html, /Review recall: 0\.0/);
+  assert.match(html, /4,523\.49 ms/);
+  assert.match(html, /does not execute ReviewService orchestration/);
+  assert.match(html, /production reliability/);
+  assert.doesNotMatch(
+    html,
+    /There is no source link yet|This is a local candidate|2,608\.8 ms/,
+  );
   assert.match(html, /not model-accuracy results/);
-  assert.match(html, /cannot establish broad accuracy/);
-  assert.doesNotMatch(html, /github\.com\/.*structured-review/i);
+  assert.match(html, /not evidence of broad model accuracy/);
 });
 
 test("Structured Review flow SVGs embed IBM Plex Sans", async () => {

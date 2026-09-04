@@ -84,7 +84,7 @@ export default function StructuredReviewLabCaseStudy() {
           <div className="proof case-proof">
             <span>Mock: 20 synthetic fixtures · deterministic evaluation</span>
             <span>
-              Live: 2 synthetic fixtures · gpt-5.6-luna · 2,608.8 ms mean/p50
+              Recorded live smoke: 2 synthetic fixtures · gpt-5.6-luna · 4,523.49 ms mean/p50
             </span>
           </div>
         </header>
@@ -241,6 +241,14 @@ export default function StructuredReviewLabCaseStudy() {
                 </p>
               </article>
             </div>
+            <p>
+              Runtime direct dependencies are pinned in the public repository.
+              Test-only dependencies are kept in a separate development file.
+              CI runs backend tests and a Mock quality gate against the current
+              20-fixture set. It also runs frontend tests and the production
+              build. These checks document repository health; they do not
+              establish production reliability.
+            </p>
           </section>
 
           <section className="chapter" id="validation">
@@ -249,7 +257,9 @@ export default function StructuredReviewLabCaseStudy() {
             <p>
               The Mock path checks the application contract with repeatable
               synthetic fixtures. The live path checks the OpenAI adapter on a
-              much smaller sample. Their results answer different questions.
+              much smaller sample. The runner reads provider output directly.
+              It does not execute the ReviewService orchestration. Their
+              results answer different questions.
             </p>
             <div className="comparison" aria-label="Mock and live validation comparison">
               <article className="metric">
@@ -269,10 +279,21 @@ export default function StructuredReviewLabCaseStudy() {
                 <p>Two synthetic fixtures using gpt-5.6-luna.</p>
                 <p>Schema validity: 1.0.</p>
                 <p>Evidence grounding: 1.0.</p>
-                <p>Review precision: 1.0.</p>
-                <p>Review recall: 1.0.</p>
-                <p>Mean and p50 latency: 2,608.8 ms.</p>
-                <p>Two cases cannot establish broad accuracy or production performance.</p>
+                <p>
+                  Review precision: not defined because the run produced no
+                  positive review predictions.
+                </p>
+                <p>Review recall: 0.0.</p>
+                <p>Mean and p50 latency: 4,523.49 ms.</p>
+                <p>
+                  The raw provider run missed the risk flag in <code>ops-02</code>.
+                </p>
+                <p>
+                  The runner does not execute ReviewService orchestration. That
+                  excludes retry and fallback behavior. It also excludes
+                  post-validation policy. This bounded smoke test is not
+                  evidence of broad model accuracy or production reliability.
+                </p>
               </article>
             </div>
           </section>
@@ -284,8 +305,11 @@ export default function StructuredReviewLabCaseStudy() {
               <div>
                 <dt>Project status</dt>
                 <dd>
-                  This is a local candidate. The project has no production
-                  deployment or real users.
+                  The source is public in the{" "}
+                  <a href="https://github.com/TacoRav4/structured-review-lab">
+                    GitHub repository
+                  </a>
+                  . The project has no production deployment or real users.
                 </dd>
               </div>
               <div>
@@ -307,13 +331,6 @@ export default function StructuredReviewLabCaseStudy() {
                 <dd>
                   Local-first does not mean fully offline. OpenAI mode sends
                   the input document to the API.
-                </dd>
-              </div>
-              <div>
-                <dt>Source link</dt>
-                <dd>
-                  There is no source link yet because the project is not a
-                  public Git repository.
                 </dd>
               </div>
             </dl>

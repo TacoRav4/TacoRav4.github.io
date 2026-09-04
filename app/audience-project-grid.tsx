@@ -112,7 +112,7 @@ const projects = [
       },
       {
         label: "live",
-        value: "2-case API smoke test · gpt-5.6-luna · 2,608.8 ms mean/p50",
+        value: "2-case recorded provider smoke · gpt-5.6-luna",
         tone: "plain",
       },
       {
@@ -122,7 +122,7 @@ const projects = [
       },
     ],
     boundary:
-      "Mock and live results stay separate. Live values describe two synthetic fixtures, not broad model accuracy or production performance.",
+      "Mock and live results stay separate. The live card names a two-fixture recorded provider check. It does not include the ReviewService policy or establish broad model accuracy or production reliability.",
     detail:
       "A static flow diagram shows how output earns its way onto the result screen.",
     visual: {
